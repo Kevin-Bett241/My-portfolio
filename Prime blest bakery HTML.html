@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Primeblest Bakery — Happiness, Baked Fresh</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FDF6EC;
+    --warm-white: #FFFDF9;
+    --gold: #C9954C;
+    --gold-light: #E8C98A;
+    --gold-dark: #8B6328;
+    --chocolate: #2C1810;
+    --brown: #5C3D2E;
+    --rose: #C97B84;
+    --sage: #7A9E8E;
+    --text: #1A0F0A;
+    --text-muted: #7A6055;
+    --text-light: #B0988E;
+    --border: rgba(201, 149, 76, 0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(255, 253, 249, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--chocolate);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo span {
+    color: var(--gold);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--chocolate);
+    color: var(--gold-light) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--brown) !important; color: var(--gold-light) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--chocolate);
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 4rem 5rem;
+    position: relative;
+  }
+
+  .hero-tagline {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-tagline::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255, 246, 236, 0.65);
+    max-width: 380px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--chocolate);
+    padding: 0.9rem 2.2rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); }
+
+  .btn-ghost {
+    color: var(--gold-light);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid rgba(232, 201, 138, 0.3);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--gold-light); }
+
+  .hero-right {
+    background: var(--brown);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-illustration {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10rem;
+    opacity: 0.15;
+    position: absolute;
+  }
+
+  .hero-art {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 3rem;
+  }
+
+  .hero-art-circle {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, rgba(201, 149, 76, 0.25), rgba(44, 24, 16, 0.6));
+    border: 1px solid rgba(201, 149, 76, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .hero-art-icon { font-size: 5rem; margin-bottom: 1rem; }
+
+  .hero-art-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.5;
+    text-align: center;
+    padding: 0 2rem;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 2rem;
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201, 149, 76, 0.15);
+  }
+
+  .hero-badge { text-align: center; }
+
+  .hero-badge-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-badge-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 246, 236, 0.45);
+  }
+
+  /* HAPPINESS STRIP */
+  .happiness-strip {
+    background: var(--gold);
+    padding: 1.2rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .happiness-scroll {
+    display: inline-flex;
+    gap: 3rem;
+    animation: scroll-left 20s linear infinite;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--chocolate);
+  }
+
+  .happiness-scroll span { opacity: 0.5; }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* SECTION STYLES */
+  .section { padding: 6rem 5rem; }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--chocolate);
+    margin-bottom: 1rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold-dark); }
+
+  .section-sub {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    max-width: 520px;
+    font-weight: 300;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .pillar {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+  }
+
+  .pillar-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .pillar-title { font-weight: 600; font-size: 0.95rem; color: var(--chocolate); margin-bottom: 0.4rem; }
+  .pillar-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+  .about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-quote {
+    background: var(--chocolate);
+    padding: 2.5rem;
+    position: relative;
+  }
+
+  .about-quote::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    color: var(--gold);
+    opacity: 0.3;
+    position: absolute;
+    top: -1rem;
+    left: 1.5rem;
+    line-height: 1;
+  }
+
+  .about-quote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--cream);
+  }
+
+  .about-location {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+  }
+
+  .location-icon { font-size: 1.5rem; flex-shrink: 0; }
+
+  .location-text h4 { font-weight: 600; color: var(--chocolate); margin-bottom: 0.3rem; }
+  .location-text p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* MENU */
+  .menu-section {
+    background: var(--warm-white);
+  }
+
+  .menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .menu-tabs {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+
+  .tab {
+    padding: 0.65rem 1.4rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    transition: all 0.2s;
+    border-right: 1px solid var(--border);
+    font-family: 'Jost', sans-serif;
+  }
+
+  .tab:last-child { border-right: none; }
+
+  .tab.active {
+    background: var(--chocolate);
+    color: var(--gold-light);
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+  }
+
+  .menu-card {
+    background: var(--warm-white);
+    padding: 2rem;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .menu-card:hover {
+    background: var(--cream);
+    transform: translateY(-2px);
+  }
+
+  .menu-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+
+  .menu-card:hover::after { width: 100%; }
+
+  .card-emoji { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--chocolate);
+    margin-bottom: 0.4rem;
+  }
+
+  .card-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem; }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold-dark);
+  }
+
+  .card-add {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--gold);
+    transition: all 0.2s;
+  }
+
+  .card-add:hover { background: var(--gold); color: var(--chocolate); }
+
+  .menu-cat { display: none; }
+  .menu-cat.active { display: grid; }
+
+  .menu-cat {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+  }
+
+  /* WEDDING */
+  .wedding-section {
+    background: var(--chocolate);
+    padding: 6rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .wedding-text .section-title { color: var(--cream); }
+  .wedding-text .section-label { color: var(--gold); }
+  .wedding-text .section-sub { color: rgba(253, 246, 236, 0.65); }
+
+  .wedding-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+  }
+
+  .wedding-feat {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.2rem;
+    border: 1px solid rgba(201, 149, 76, 0.2);
+  }
+
+  .feat-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .feat-title { font-weight: 600; color: var(--gold-light); font-size: 0.95rem; margin-bottom: 0.2rem; }
+  .feat-text { font-size: 0.83rem; color: rgba(253, 246, 236, 0.55); line-height: 1.5; }
+
+  .wedding-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .cake-tiers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(201, 149, 76, 0.15);
+  }
+
+  .cake-tier {
+    background: rgba(44, 24, 16, 0.8);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(201, 149, 76, 0.1);
+  }
+
+  .cake-tier-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+  .cake-tier-name { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--gold-light); margin-bottom: 0.3rem; }
+  .cake-tier-desc { font-size: 0.78rem; color: rgba(253, 246, 236, 0.45); }
+
+  .wedding-cta {
+    background: var(--gold);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .wedding-cta p { font-size: 0.9rem; font-weight: 500; color: var(--chocolate); }
+  .wedding-cta a {
+    background: var(--chocolate);
+    color: var(--gold-light);
+    padding: 0.7rem 1.5rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .wedding-cta a:hover { opacity: 0.85; }
+
+  /* TEA LOUNGE */
+  .lounge-section {
+    background: var(--cream);
+    padding: 6rem 5rem;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .lounge-art {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+  }
+
+  .lounge-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .lounge-card.featured {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--chocolate);
+    border-color: transparent;
+  }
+
+  .lounge-card-icon { font-size: 2rem; }
+  .lounge-card-title { font-weight: 600; color: var(--chocolate); font-size: 0.95rem; }
+  .lounge-card-text { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
+  .lounge-card.featured .lounge-card-title { color: var(--gold-light); }
+  .lounge-card.featured .lounge-card-text { color: rgba(253, 246, 236, 0.6); }
+
+  /* ORDER SECTION */
+  .order-section {
+    background: var(--warm-white);
+    padding: 6rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .order-form {
+    background: var(--cream);
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+  }
+
+  .order-form h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--chocolate);
+    margin-bottom: 0.5rem;
+  }
+
+  .order-form p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-family: 'Jost', sans-serif;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-textarea { min-height: 80px; resize: vertical; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .mpesa-note {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    background: rgba(201, 149, 76, 0.1);
+    padding: 1rem;
+    border-left: 3px solid var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .mpesa-note p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--chocolate);
+    color: var(--gold-light);
+    padding: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    transition: background 0.2s;
+  }
+
+  .submit-btn:hover { background: var(--brown); }
+
+  .order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .info-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+  }
+
+  .info-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--chocolate);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .info-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .info-card li {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    line-height: 1.5;
+  }
+
+  .info-card li::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .delivery-zones {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .zone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+  }
+
+  .zone:last-child { border-bottom: none; }
+  .zone-name { color: var(--text-muted); }
+  .zone-price { font-weight: 600; color: var(--gold-dark); }
+
+  /* FOOTER */
+  footer {
+    background: var(--chocolate);
+    padding: 4rem 5rem 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(201, 149, 76, 0.15);
+  }
+
+  .footer-brand .nav-logo {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .footer-brand p {
+    font-size: 0.85rem;
+    color: rgba(253, 246, 236, 0.5);
+    line-height: 1.7;
+    max-width: 260px;
+  }
+
+  .footer-col h5 {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+  .footer-col li a {
+    font-size: 0.85rem;
+    color: rgba(253, 246, 236, 0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col li a:hover { color: var(--gold-light); }
+  .footer-col li, .footer-col address { font-size: 0.85rem; color: rgba(253, 246, 236, 0.5); font-style: normal; line-height: 1.6; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: rgba(253, 246, 236, 0.3);
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--chocolate);
+    color: var(--gold-light);
+    padding: 1rem 1.5rem;
+    font-size: 0.88rem;
+    border-left: 3px solid var(--gold);
+    transform: translateY(4rem);
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 200;
+    font-family: 'Jost', sans-serif;
+  }
+
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tagline { animation: fadeInUp 0.6s ease both; }
+  .hero-title { animation: fadeInUp 0.7s 0.1s ease both; }
+  .hero-desc { animation: fadeInUp 0.7s 0.2s ease both; }
+  .hero-buttons { animation: fadeInUp 0.7s 0.3s ease both; }
+  .hero-badges { animation: fadeInUp 0.7s 0.4s ease both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero, .about, .wedding-section, .lounge-section, .order-section {
+      grid-template-columns: 1fr;
+    }
+    .hero-right { min-height: 400px; }
+    .section, .wedding-section, .lounge-section, .order-section { padding: 4rem 2rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hero-left { padding: 7rem 2rem 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  .cart-count {
+    background: var(--gold);
+    color: var(--chocolate);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 0.65rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Prime<span>blest</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#wedding">Wedding Cakes</a></li>
+    <li><a href="#lounge">Tea Lounge</a></li>
+    <li><a href="#order" class="nav-cta">Order Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tagline">Chepkoilel Junction, Eldoret</div>
+    <h1 class="hero-title">Baked with<br><em>Joy.</em><br>Savoured with<br>Happiness.</h1>
+    <p class="hero-desc">Premium artisan bakes crafted daily — from golden loaves to towering wedding cakes. Every bite carries warmth, love, and the art of fine baking.</p>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn-primary">Explore Menu</a>
+      <a href="#order" class="btn-ghost">Order & Pay via M-Pesa →</a>
+    </div>
+    <div class="hero-badges">
+      <div class="hero-badge">
+        <span class="hero-badge-num">Fresh</span>
+        <span class="hero-badge-label">Baked Daily</span>
+      </div>
+      <div class="hero-badge">
+        <span class="hero-badge-num">Ksh 20+</span>
+        <span class="hero-badge-label">Starting Price</span>
+      </div>
+      <div class="hero-badge">
+        <span class="hero-badge-num">Eldoret</span>
+        <span class="hero-badge-label">& Beyond</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-art">
+      <div class="hero-art-circle">
+        <div class="hero-art-icon">🎂</div>
+        <p class="hero-art-text">"Every bite is a<br>moment of happiness"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HAPPINESS STRIP -->
+<div class="happiness-strip">
+  <div class="happiness-scroll">
+    <span>✦</span> Baked with Love <span>✦</span> Fresh Every Morning <span>✦</span> Premium Artisan Quality <span>✦</span> Happiness in Every Bite <span>✦</span> Made for Life's Best Moments <span>✦</span> Baked with Love <span>✦</span> Fresh Every Morning <span>✦</span> Premium Artisan Quality <span>✦</span> Happiness in Every Bite <span>✦</span> Made for Life's Best Moments <span>✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about section" id="about">
+  <div class="about-left">
+    <div class="section-label">Our Story</div>
+    <h2 class="section-title">Where <em>Happiness</em><br>Is Always on the Menu</h2>
+    <p class="section-sub">Primeblest Bakery is Eldoret's premier destination for artisan baked goods. We believe food is more than sustenance — it's the thread that weaves togetherness, celebration, and pure joy.</p>
+    <div class="about-pillars">
+      <div class="pillar">
+        <div class="pillar-icon">🌾</div>
+        <div class="pillar-title">Premium Ingredients</div>
+        <p class="pillar-text">Finest flour, fresh dairy, and locally sourced produce baked into every product.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">👨‍🍳</div>
+        <div class="pillar-title">Master Bakers</div>
+        <p class="pillar-text">Our artisans bring decades of combined experience to every loaf and cake.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🚚</div>
+        <div class="pillar-title">Wide Delivery</div>
+        <p class="pillar-text">We deliver across Eldoret, Uasin Gishu, and surrounding counties.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">☕</div>
+        <div class="pillar-title">Tea & Stories</div>
+        <p class="pillar-text">Come sit, sip, and share moments at our warm in-store lounge.</p>
+      </div>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="about-quote">
+      <p>Happiness isn't something you find. Sometimes, it's something you bake — and then share with people you love.</p>
+    </div>
+    <div class="about-location">
+      <div class="location-icon">📍</div>
+      <div class="location-text">
+        <h4>Find Us at Chepkoilel Junction</h4>
+        <p>Located on the main road to University of Eldoret, Chepkoilel Junction. Easy to find, impossible to forget. Open Monday – Sunday, 6:00 AM – 8:00 PM.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section section" id="menu">
+  <div class="menu-header">
+    <div>
+      <div class="section-label">Our Catalogue</div>
+      <h2 class="section-title">The <em>Primeblest</em> Menu</h2>
+    </div>
+    <div class="menu-tabs">
+      <button class="tab active" onclick="switchTab('all')">All</button>
+      <button class="tab" onclick="switchTab('breads')">Breads</button>
+      <button class="tab" onclick="switchTab('pastries')">Pastries</button>
+      <button class="tab" onclick="switchTab('cakes')">Cakes</button>
+      <button class="tab" onclick="switchTab('drinks')">Drinks & More</button>
+    </div>
+  </div>
+
+  <div id="menu-all" class="menu-cat active" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5px; background: rgba(201,149,76,0.15);">
+
+    <!-- BREADS -->
+    <div class="menu-card" data-cat="breads">
+      <span class="card-emoji">🍞</span>
+      <div class="card-name">White Sandwich Loaf</div>
+      <p class="card-desc">Soft, fluffy, and golden-crusted. Baked fresh each morning for the perfect sandwich or toast.</p>
+      <div class="card-footer">
+        <span class="card-price">Ksh 65</span>
+        <button class="card-add" onclick="addToCart('White Loaf', 65)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="breads">
+      <span class="card-emoji">🥖</span>
+      <div class="card-name">Whole Wheat Loaf</div>
+      <p class="card-desc">Nutty, wholesome, and fiber-rich. The healthy bread lover's dream from our artisan ovens.</p>
+      <div class="card-footer">
+        <span class="card-price">Ksh 80</span>
+        <button class="card-add" onclick="addToCart('Whole Wheat Loaf', 80)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="breads">
+      <span class="card-emoji">🫓</span>
+      <div class="card-name">Chapati</div>
+      <p class="card-desc">Soft, layered, and made fresh. A beloved Kenyan staple done the Primeblest way.</p>
+      <div class="card-footer">
+        <span class="card-price">Ksh 20</span>
+        <button class="card-add" onclick="addToCart('Chapati', 20)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="breads">
+      <span class="card-emoji">🥐</span>
+      <div class="card-name">Butter Rolls</div>
+      <p class="card-desc">Pillowy dinner rolls brushed with rich butter. Pairs beautifully with soups, stews, or tea.</p>
+      <div class="card-footer">
+        <span class="card-price">Ksh 15</span>
+        <button class="card-add" onclick="addToCart('Butter Roll', 15)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="breads">
+      <span class="card-emoji">🥙</span>
+      <div class="card-name">Brown Bread Loaf</div>
+      <p class="card-desc">Dense, rich, and deeply satisfying. Made with a blend of flours for robust flavour.</p>
+      <div class="card-footer">
+        <span class="card-price">Ksh 75</span>
+        <button class="card-add" onclick="addToCart('Brown Bread', 75)">+</button>
+      </div>
+    </div>
+
+    <!-- PASTRIES -->
+    <div class="menu-card" data-cat="pastries">
+      <span class="card-emoji">🍩</span>
+      <div class="card-name">Classic Doughnut</div>
+      <p class="card-desc">Glazed to perfection with a soft, airy centre. A bite of pure happiness on any day.</p>
+      <div class="card-footer">
+        <span class="card-price">Ksh 40</span>
+        <button class="card-add" onclick="addToCart('Doughnut', 40)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="pastries">
+      <span class="card-emoji">🫔</span>
+      <div class="card-name">Mandazi</div>
+      <p class="card-desc">Light, golden-fried, and subtly sweet. The perfect companion to your morning chai.</p>
+      <div class="card-footer">
+        <span class="card-price">Ksh 20</span>
+        <button class="card-add" onclick="addToCart('Mandazi', 20)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="pastries">
+      <span class="card-emoji">🥧</span>
+      <div class="card-name">Meat Pie</div>
+      <p class="card-desc">Flaky golden pastry encasing a rich, seasoned beef filling. Hearty and satisfying.</p>
+      <div class="card-footer">
+        <span class="card-price">Ksh 50</span>
+        <button class="card-add" onclick="addToCart('Meat Pie', 50)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="pastries">
+      <span class="card-emoji">🧇</span>
+      <div class="card-name">Sausage Roll</div>
+      <p class="card-desc">Crispy puff pastry wrapped around juicy seasoned sausage. A crowd favourite.</p>
+      <div class="card-footer">
+        <span class="card-price">Ksh 55</span>
+        <button class="card-add" onclick="addToCart('Sausage Roll', 55)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="pastries">
+      <span class="card-emoji">🍞</span>
+      <div class="card-name">Cinnamon Bun</div>
+      <p class="card-desc">Swirled with cinnamon, drizzled with glaze. A morning luxury worth waking up for.</p>
+      <div class="card-footer">
+        <span class="card-price">Ksh 60</span>
+        <button class="card-add" onclick="addToCart('Cinnamon Bun', 60)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="pastries">
+      <span class="card-emoji">🧁</span>
+      <div class="card-name">Cream Puff</div>
+      <p class="card-desc">Delicate choux pastry filled with velvety vanilla cream. Elegance in every bite.</p>
+      <div class="card-footer">
+        <span class="card-price">Ksh 70</span>
+        <button class="card-add" onclick="addToCart('Cream Puff', 70)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="pastries">
+      <span class="card-emoji">🥐</span>
+      <div class="card-name">Croissant</div>
+      <p class="card-desc">Buttery, flaky, and laminated to perfection. Our most premium everyday pastry.</p>
+      <div class="card-footer">
+        <span class="card-price">Ksh 80</span>
+        <button class="card-add" onclick="addToCart('Croissant', 80)">+</button>
+      </div>
+    </div>
+
+    <!-- CAKES -->
+    <div class="menu-card" data-cat="cakes">
+      <span class="card-emoji">🍰</span>
+      <div class="card-name">Vanilla Sponge Cake</div>
+      <p class="card-desc">Light, fragrant layers of vanilla sponge with silky buttercream. Classic and timeless.</p>
+      <div class="card-footer">
+        <span class="card-price">From Ksh 800</span>
+        <button class="card-add" onclick="addToCart('Vanilla Sponge', 800)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="cakes">
+      <span class="card-emoji">🎂</span>
+      <div class="card-name">Chocolate Fudge Cake</div>
+      <p class="card-desc">Rich, decadent layers of chocolate sponge drenched in fudge ganache. Pure indulgence.</p>
+      <div class="card-footer">
+        <span class="card-price">From Ksh 900</span>
+        <button class="card-add" onclick="addToCart('Chocolate Cake', 900)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="cakes">
+      <span class="card-emoji">🎉</span>
+      <div class="card-name">Birthday Celebration Cake</div>
+      <p class="card-desc">Custom-decorated, flavour of your choice. Make every birthday unforgettable.</p>
+      <div class="card-footer">
+        <span class="card-price">From Ksh 1,200</span>
+        <button class="card-add" onclick="addToCart('Birthday Cake', 1200)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="cakes">
+      <span class="card-emoji">🫐</span>
+      <div class="card-name">Blueberry Cheesecake</div>
+      <p class="card-desc">Creamy NY-style cheesecake on a buttery biscuit base, topped with blueberry compote.</p>
+      <div class="card-footer">
+        <span class="card-price">From Ksh 1,100</span>
+        <button class="card-add" onclick="addToCart('Cheesecake', 1100)">+</button>
+      </div>
+    </div>
+
+    <!-- DRINKS & MORE -->
+    <div class="menu-card" data-cat="drinks">
+      <span class="card-emoji">🫙</span>
+      <div class="card-name">Delamere Yoghurt</div>
+      <p class="card-desc">Kenya's finest dairy brand. Creamy, probiotic-rich, available in plain and fruit varieties.</p>
+      <div class="card-footer">
+        <span class="card-price">From Ksh 60</span>
+        <button class="card-add" onclick="addToCart('Delamere Yoghurt', 60)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="drinks">
+      <span class="card-emoji">☕</span>
+      <div class="card-name">Kenyan Chai</div>
+      <p class="card-desc">Freshly brewed, milky, spiced Kenyan tea. The cornerstone of every good conversation.</p>
+      <div class="card-footer">
+        <span class="card-price">Ksh 30</span>
+        <button class="card-add" onclick="addToCart('Kenyan Chai', 30)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="drinks">
+      <span class="card-emoji">☕</span>
+      <div class="card-name">Filter Coffee</div>
+      <p class="card-desc">Bold East African arabica, freshly brewed. The perfect morning ritual.</p>
+      <div class="card-footer">
+        <span class="card-price">Ksh 50</span>
+        <button class="card-add" onclick="addToCart('Filter Coffee', 50)">+</button>
+      </div>
+    </div>
+
+    <div class="menu-card" data-cat="drinks">
+      <span class="card-emoji">🥛</span>
+      <div class="card-name">Fresh Milk</div>
+      <p class="card-desc">Cold, fresh-pasteurised whole milk. Nourishing and pure, sourced locally.</p>
+      <div class="card-footer">
+        <span class="card-price">From Ksh 40</span>
+        <button class="card-add" onclick="addToCart('Fresh Milk', 40)">+</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WEDDING CAKES -->
+<section class="wedding-section" id="wedding">
+  <div class="wedding-text">
+    <div class="section-label">Celebrate Love</div>
+    <h2 class="section-title">Wedding <em>Cakes</em><br>Fit for Royalty</h2>
+    <p class="section-sub">Your wedding deserves perfection. Our master pastry chefs create bespoke, multi-tiered cakes that are as beautiful as the love they celebrate.</p>
+    <div class="wedding-features">
+      <div class="wedding-feat">
+        <div class="feat-icon">🎨</div>
+        <div>
+          <div class="feat-title">Fully Bespoke Design</div>
+          <p class="feat-text">Every cake is designed to your vision — from floral fondant to gold-leaf finishes.</p>
+        </div>
+      </div>
+      <div class="wedding-feat">
+        <div class="feat-icon">🍰</div>
+        <div>
+          <div class="feat-title">Choice of Flavours</div>
+          <p class="feat-text">Vanilla, chocolate, red velvet, lemon zest, caramel, and seasonal specials.</p>
+        </div>
+      </div>
+      <div class="wedding-feat">
+        <div class="feat-icon">🚗</div>
+        <div>
+          <div class="feat-title">Delivery to Venue</div>
+          <p class="feat-text">We handle safe, refrigerated delivery and setup at your wedding venue.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wedding-right">
+    <div class="cake-tiers">
+      <div class="cake-tier">
+        <div class="cake-tier-icon">🎂</div>
+        <div class="cake-tier-name">2-Tier Classic</div>
+        <p class="cake-tier-desc">Elegant & intimate</p>
+      </div>
+      <div class="cake-tier">
+        <div class="cake-tier-icon">🎂</div>
+        <div class="cake-tier-name">3-Tier Grand</div>
+        <p class="cake-tier-desc">Timeless & regal</p>
+      </div>
+      <div class="cake-tier">
+        <div class="cake-tier-icon">🎂</div>
+        <div class="cake-tier-name">4-Tier Luxury</div>
+        <p class="cake-tier-desc">Bold & opulent</p>
+      </div>
+      <div class="cake-tier">
+        <div class="cake-tier-icon">✨</div>
+        <div class="cake-tier-name">Fully Custom</div>
+        <p class="cake-tier-desc">Your dream, realised</p>
+      </div>
+    </div>
+    <div class="wedding-cta">
+      <p>Ready to design your dream wedding cake?</p>
+      <a href="#order">Book a Consultation</a>
+    </div>
+  </div>
+</section>
+
+<!-- TEA LOUNGE -->
+<section class="lounge-section" id="lounge">
+  <div class="lounge-art">
+    <div class="lounge-card featured">
+      <div class="lounge-card-icon">☕</div>
+      <div>
+        <div class="lounge-card-title">The Primeblest Tea Corner</div>
+        <p class="lounge-card-text">Step in, slow down, and let the warmth of a great brew and fresh pastry melt the day away. Stories shared here taste sweeter.</p>
+      </div>
+    </div>
+    <div class="lounge-card">
+      <div class="lounge-card-icon">🫖</div>
+      <div class="lounge-card-title">Kenyan Chai & More</div>
+      <p class="lounge-card-text">Spiced tea, black tea, filter coffee and fresh milk on tap.</p>
+    </div>
+    <div class="lounge-card">
+      <div class="lounge-card-icon">💬</div>
+      <div class="lounge-card-title">Good Conversations</div>
+      <p class="lounge-card-text">A welcoming spot where community gathers and stories flow freely.</p>
+    </div>
+    <div class="lounge-card">
+      <div class="lounge-card-icon">🫙</div>
+      <div class="lounge-card-title">Delamere Yoghurts</div>
+      <p class="lounge-card-text">Kenya's finest yoghurt brand, stocked fresh and cold daily.</p>
+    </div>
+    <div class="lounge-card">
+      <div class="lounge-card-icon">🌅</div>
+      <div class="lounge-card-title">Open from 6 AM</div>
+      <p class="lounge-card-text">Start your morning right. Fresh bakes ready before the sun is fully up.</p>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Sit & Savour</div>
+    <h2 class="section-title">More Than a<br>Bakery — a <em>Place<br>to Belong</em></h2>
+    <p class="section-sub">Primeblest is where Eldoret comes to slow down. Pull up a chair, order a hot chai with a warm mandazi, and let the conversation flow. Life's best moments happen here.</p>
+    <br><br>
+    <a href="#order" class="btn-primary" style="background: var(--chocolate); color: var(--gold-light); padding: 0.9rem 2.2rem; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block;">Visit Us Today</a>
+  </div>
+</section>
+
+<!-- ORDER SECTION -->
+<section class="order-section" id="order">
+  <div>
+    <div class="section-label">Online Orders</div>
+    <h2 class="section-title">Order <em>Fresh,</em><br>Pay with M-Pesa</h2>
+    <p class="section-sub">Order from wherever you are. We bake fresh and deliver across Eldoret and beyond. Pay securely via M-Pesa — quick, simple, trusted.</p>
+    <div class="order-info" style="margin-top: 2.5rem;">
+      <div class="info-card">
+        <h4>🚚 Delivery Zones & Fees</h4>
+        <div class="delivery-zones">
+          <div class="zone">
+            <span class="zone-name">Chepkoilel / Eldoret Town</span>
+            <span class="zone-price">Ksh 80</span>
+          </div>
+          <div class="zone">
+            <span class="zone-name">Kapseret / Langas / Munyaka</span>
+            <span class="zone-price">Ksh 120</span>
+          </div>
+          <div class="zone">
+            <span class="zone-name">Turbo / Burnt Forest / Moiben</span>
+            <span class="zone-price">Ksh 200</span>
+          </div>
+          <div class="zone">
+            <span class="zone-name">Kitale / Iten / Kapenguria</span>
+            <span class="zone-price">Ksh 350</span>
+          </div>
+          <div class="zone">
+            <span class="zone-name">Broader Western Kenya</span>
+            <span class="zone-price">Call Us</span>
+          </div>
+        </div>
+      </div>
+      <div class="info-card">
+        <h4>📞 Contact & Hours</h4>
+        <ul>
+          <li>Call or WhatsApp: <strong>+254 700 000 000</strong></li>
+          <li>Open Mon – Sun: 6:00 AM – 8:00 PM</li>
+          <li>Chepkoilel Junction, on the way to UoE</li>
+          <li>Orders placed before noon delivered same day</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="order-form">
+    <h3>Place Your Order</h3>
+    <p>Fill in your details and we'll confirm via WhatsApp.</p>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" placeholder="Jane Chebet" id="fname">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone Number</label>
+        <input type="tel" class="form-input" placeholder="0712 345 678" id="fphone">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">What Would You Like?</label>
+      <select class="form-select" id="fproduct">
+        <option value="">— Select a Product —</option>
+        <optgroup label="Breads">
+          <option>White Sandwich Loaf – Ksh 65</option>
+          <option>Whole Wheat Loaf – Ksh 80</option>
+          <option>Chapati – Ksh 20 each</option>
+          <option>Butter Rolls – Ksh 15 each</option>
+        </optgroup>
+        <optgroup label="Pastries">
+          <option>Classic Doughnut – Ksh 40</option>
+          <option>Mandazi – Ksh 20 each</option>
+          <option>Meat Pie – Ksh 50</option>
+          <option>Croissant – Ksh 80</option>
+          <option>Sausage Roll – Ksh 55</option>
+          <option>Cinnamon Bun – Ksh 60</option>
+        </optgroup>
+        <optgroup label="Cakes">
+          <option>Birthday Cake – from Ksh 1,200</option>
+          <option>Wedding Cake – Custom Quote</option>
+          <option>Vanilla Sponge – from Ksh 800</option>
+        </optgroup>
+        <optgroup label="Drinks & More">
+          <option>Delamere Yoghurt</option>
+          <option>Kenyan Chai – Ksh 30</option>
+        </optgroup>
+        <option value="other">Other / Custom Order</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Delivery Address</label>
+      <input type="text" class="form-input" placeholder="e.g. Langas, near Total Petrol Station" id="faddress">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Additional Notes</label>
+      <textarea class="form-textarea" placeholder="Quantity, customisation requests, preferred delivery time..." id="fnotes"></textarea>
+    </div>
+
+    <div class="mpesa-note">
+      <span>📱</span>
+      <p>Payment is via <strong>M-Pesa</strong>. After confirming your order via WhatsApp, you'll receive our M-Pesa details. <em>Note: delivery fees are charged separately based on your location.</em></p>
+    </div>
+
+    <button class="submit-btn" onclick="submitOrder()">Send Order via WhatsApp</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="nav-logo">Prime<span>blest</span></span>
+      <p>Premium artisan baked goods, wedding cakes, fresh bread, and more — delivered across Eldoret and beyond. Happiness, baked fresh daily.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Menu</h5>
+      <ul>
+        <li><a href="#menu">Breads & Loaves</a></li>
+        <li><a href="#menu">Pastries & Snacks</a></li>
+        <li><a href="#menu">Cakes & Desserts</a></li>
+        <li><a href="#menu">Drinks & Yoghurt</a></li>
+        <li><a href="#wedding">Wedding Cakes</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Visit Us</h5>
+      <ul>
+        <li><a href="#lounge">Tea Lounge</a></li>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#order">Order Online</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Find Us</h5>
+      <address>
+        Chepkoilel Junction<br>
+        On the road to University of Eldoret<br>
+        Eldoret, Kenya<br><br>
+        Mon – Sun: 6:00 AM – 8:00 PM<br>
+        WhatsApp: +254 700 000 000
+      </address>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Primeblest Bakery. All rights reserved.</span>
+    <span>Happiness, baked fresh daily. 🍞</span>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+  function switchTab(cat) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+    const all = document.getElementById('menu-all');
+    all.style.display = 'grid';
+    document.querySelectorAll('.menu-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  let cartTotal = 0;
+
+  function addToCart(name, price) {
+    cartTotal += price;
+    showToast(`✓ ${name} added — Ksh ${price}`);
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2800);
+  }
+
+  function submitOrder() {
+    const name = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('fphone').value.trim();
+    const product = document.getElementById('fproduct').value;
+    const address = document.getElementById('faddress').value.trim();
+    const notes = document.getElementById('fnotes').value.trim();
+
+    if (!name || !phone || !product) {
+      showToast('⚠ Please fill in your name, phone, and product.');
+      return;
+    }
+
+    const message = `Hello Primeblest Bakery! 🍞\n\nI'd like to place an order:\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n🛒 Order: ${product}\n📍 Delivery Address: ${address || 'Not specified'}\n📝 Notes: ${notes || 'None'}\n\nPlease confirm and share M-Pesa payment details. Thank you!`;
+
+    const waUrl = `https://wa.me/254700000000?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, '_blank');
+  }
+
+  // Scroll effect for nav
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 60) {
+      nav.style.boxShadow = '0 2px 20px rgba(44,24,16,0.1)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
