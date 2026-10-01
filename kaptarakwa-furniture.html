@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaptarakwa Furniture Centre | Premium Sofa Sets – Kimumu, Eldoret</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0805;
+    --deep: #110e0a;
+    --card: #161210;
+    --border: rgba(180,140,80,0.18);
+    --gold: #c9963a;
+    --gold-light: #e8b85a;
+    --gold-pale: rgba(201,150,58,0.12);
+    --cream: #f0e6d0;
+    --muted: #8a7a65;
+    --white: #fdf8f0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 3rem;
+    background: linear-gradient(to bottom, rgba(10,8,5,0.95), transparent);
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--gold-light);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--cream); font-weight: 300; font-style: italic; }
+
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .nav-cta {
+    background: transparent; border: 1px solid var(--gold);
+    color: var(--gold); padding: 0.55rem 1.4rem;
+    font-family: 'Outfit', sans-serif; font-size: 0.78rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.3s; text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--black); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 8rem 3rem 4rem;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 70% 50%, rgba(120,80,20,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,150,58,0.08) 0%, transparent 60%),
+      linear-gradient(135deg, #0a0805 0%, #1a1208 50%, #0a0805 100%);
+  }
+
+  /* Decorative gold lines */
+  .hero-bg::before {
+    content: '';
+    position: absolute; top: 0; right: 28%; width: 1px; height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--border), transparent);
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute; top: 30%; left: 0; right: 0; height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 680px; }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-tag::before {
+    content: ''; display: block; width: 32px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 7vw, 6rem);
+    font-weight: 300; line-height: 1.06;
+    color: var(--white);
+    opacity: 0; animation: fadeUp 0.9s 0.35s forwards;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--gold-light);
+    display: block;
+  }
+
+  .hero-sub {
+    margin-top: 1.8rem; font-size: 1rem;
+    color: var(--muted); line-height: 1.7; max-width: 440px;
+    opacity: 0; animation: fadeUp 0.9s 0.5s forwards;
+  }
+
+  .hero-actions {
+    margin-top: 2.8rem; display: flex; gap: 1.2rem; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.9s 0.65s forwards;
+  }
+
+  .btn-primary {
+    background: var(--gold); color: var(--black);
+    padding: 0.9rem 2.2rem; font-size: 0.82rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none; font-family: 'Outfit', sans-serif;
+    font-weight: 500; transition: all 0.3s;
+    border: none; cursor: pointer; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent; color: var(--cream);
+    padding: 0.9rem 2.2rem; font-size: 0.82rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none; font-family: 'Outfit', sans-serif;
+    border: 1px solid var(--border); transition: all 0.3s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* Floating badge */
+  .hero-badge {
+    position: absolute; right: 6rem; top: 50%;
+    transform: translateY(-50%);
+    width: 150px; height: 150px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    gap: 0.2rem;
+    opacity: 0; animation: fadeIn 1.2s 0.9s forwards;
+    animation-name: spin-in;
+  }
+  .hero-badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 300; color: var(--gold);
+    line-height: 1;
+  }
+  .hero-badge-text {
+    font-size: 0.68rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--muted);
+  }
+
+  /* Scroll hint */
+  .scroll-hint {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); opacity: 0; animation: fadeIn 1s 1.4s forwards;
+  }
+  .scroll-line {
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s 1.4s infinite;
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 6rem 3rem; }
+
+  .section-label {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.2rem;
+  }
+  .section-label::before {
+    content: ''; width: 24px; height: 1px; background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 300; line-height: 1.15; color: var(--white);
+  }
+  .section-title em { font-style: italic; color: var(--gold-light); }
+
+  /* ── PRODUCTS ── */
+  .products { background: var(--deep); }
+
+  .products-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 3.5rem; gap: 2rem; flex-wrap: wrap;
+  }
+
+  .products-sub {
+    font-size: 0.92rem; color: var(--muted); max-width: 340px;
+    line-height: 1.7; margin-top: 1rem;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.5px;
+  }
+
+  .product-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 2.2rem 2rem;
+    position: relative; overflow: hidden;
+    transition: all 0.4s;
+    cursor: default;
+  }
+  .product-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    transform: scaleX(0); transition: transform 0.4s;
+  }
+  .product-card:hover { background: #1c1710; transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+  .product-card:hover::before { transform: scaleX(1); }
+
+  .product-icon {
+    font-size: 2rem; margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .product-num {
+    position: absolute; top: 1.5rem; right: 1.8rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 300;
+    color: rgba(201,150,58,0.08);
+    line-height: 1;
+  }
+
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400; color: var(--white);
+    margin-bottom: 0.6rem;
+  }
+
+  .product-desc {
+    font-size: 0.84rem; color: var(--muted); line-height: 1.7;
+  }
+
+  .product-tags {
+    margin-top: 1.4rem; display: flex; gap: 0.5rem; flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.7rem; border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--black); }
+  .about-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6rem; align-items: center; max-width: 1100px;
+  }
+
+  .about-visual {
+    position: relative; aspect-ratio: 4/5;
+    border: 1px solid var(--border);
+  }
+  .about-visual-inner {
+    position: absolute; inset: 1.5rem;
+    background: linear-gradient(135deg, #1a1208, #221a0e);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .about-visual-inner::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(201,150,58,0.12), transparent 70%);
+  }
+  .about-sofa-icon {
+    font-size: 8rem; opacity: 0.6;
+    position: relative; z-index: 1;
+  }
+
+  .about-corner {
+    position: absolute; bottom: -1px; right: -1px;
+    width: 80px; height: 80px;
+    border-top: 1px solid var(--gold);
+    border-left: 1px solid var(--gold);
+  }
+
+  .about-stats {
+    display: flex; gap: 2rem; margin-top: 2.5rem; flex-wrap: wrap;
+  }
+  .stat { flex: 1; min-width: 100px; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 300; color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); margin-top: 0.4rem;
+  }
+
+  .about-text { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-top: 1.4rem; }
+  .about-text + .about-text { margin-top: 1rem; }
+
+  /* ── MATERIALS ── */
+  .materials {
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 3rem;
+  }
+  .materials-inner { display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; }
+  .materials-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 300; color: var(--white);
+    white-space: nowrap;
+  }
+  .materials-divider { width: 1px; height: 60px; background: var(--border); }
+  .materials-list { display: flex; gap: 3rem; flex-wrap: wrap; }
+  .material-item { text-align: center; }
+  .material-icon { font-size: 1.8rem; display: block; margin-bottom: 0.4rem; }
+  .material-name {
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+  }
+
+  /* ── LOCATION ── */
+  .location { background: var(--black); }
+  .location-inner {
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 5rem; align-items: start;
+  }
+
+  .location-details { display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem; }
+
+  .location-item { display: flex; gap: 1.2rem; align-items: flex-start; }
+  .location-icon-box {
+    width: 44px; height: 44px; flex-shrink: 0;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .location-item-label {
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.3rem;
+  }
+  .location-item-value {
+    font-size: 0.92rem; color: var(--cream); line-height: 1.5;
+  }
+
+  .map-placeholder {
+    background: var(--card);
+    border: 1px solid var(--border);
+    aspect-ratio: 4/3;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .map-placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(201,150,58,0.06), transparent 70%);
+  }
+  .map-pin { font-size: 3rem; position: relative; z-index: 1; }
+  .map-label {
+    font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); position: relative; z-index: 1;
+  }
+  .map-address {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: var(--cream);
+    position: relative; z-index: 1;
+  }
+  .map-directions {
+    margin-top: 0.5rem; font-size: 0.75rem;
+    color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase;
+    position: relative; z-index: 1;
+    background: none; border: 1px solid var(--border);
+    padding: 0.5rem 1.2rem; cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.3s; text-decoration: none; display: inline-block;
+  }
+  .map-directions:hover { background: var(--gold-pale); border-color: var(--gold); }
+
+  /* ── CTA STRIP ── */
+  .cta-strip {
+    background: linear-gradient(135deg, #1a1208 0%, #221a0e 50%, #1a1208 100%);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 5rem 3rem;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-strip::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse, rgba(201,150,58,0.08), transparent 70%);
+    pointer-events: none;
+  }
+  .cta-strip h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300; color: var(--white);
+    position: relative;
+  }
+  .cta-strip h2 em { font-style: italic; color: var(--gold-light); }
+  .cta-strip p {
+    color: var(--muted); font-size: 0.95rem;
+    margin: 1rem auto 2.5rem; max-width: 420px; line-height: 1.7;
+    position: relative;
+  }
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+  .btn-call {
+    background: var(--gold); color: var(--black);
+    padding: 1rem 2.5rem; font-size: 0.85rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none; font-family: 'Outfit', sans-serif;
+    font-weight: 500; transition: all 0.3s; display: inline-flex;
+    align-items: center; gap: 0.6rem;
+  }
+  .btn-call:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    padding: 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+    border-top: 1px solid var(--border);
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 600; color: var(--gold);
+  }
+  .footer-logo span { color: var(--cream); font-weight: 300; }
+  .footer-copy { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.08em; }
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem; font-style: italic; color: var(--muted);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+  @keyframes spin-in {
+    from { opacity: 0; transform: translateY(-50%) rotate(-15deg) scale(0.8); }
+    to { opacity: 1; transform: translateY(-50%) rotate(0deg) scale(1); }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; } 50% { opacity: 1; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .hero-badge { display: none; }
+    .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .about-visual { max-width: 320px; aspect-ratio: 1; }
+    .location-inner { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+    .materials-inner { flex-direction: column; gap: 2rem; }
+    .materials-divider { width: 60px; height: 1px; }
+  }
+
+  @media (max-width: 600px) {
+    .products-header { flex-direction: column; align-items: flex-start; }
+    .hero h1 { font-size: 2.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Kaptarakwa <span>Furniture</span></a>
+  <ul class="nav-links">
+    <li><a href="#products">Collection</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#location">Find Us</a></li>
+  </ul>
+  <a class="nav-cta" href="#location">Visit Showroom</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Premium Furniture · Kimumu, Eldoret</div>
+    <h1>
+      Where Every Room
+      <em>Tells a Story</em>
+    </h1>
+    <p class="hero-sub">
+      Handpicked sofa sets crafted for comfort and elegance. Fabric, leather,
+      and bespoke designs — built to transform your living space.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#products">Explore Collection</a>
+      <a class="btn-outline" href="#location">Find Our Showroom</a>
+    </div>
+  </div>
+  <div class="hero-badge">
+    <span class="hero-badge-num">6+</span>
+    <span class="hero-badge-text">Sofa Styles</span>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- MATERIALS STRIP -->
+<div class="materials">
+  <div class="materials-inner">
+    <div class="materials-title">Available in</div>
+    <div class="materials-divider"></div>
+    <div class="materials-list">
+      <div class="material-item">
+        <span class="material-icon">🪵</span>
+        <div class="material-name">Fabric</div>
+      </div>
+      <div class="material-item">
+        <span class="material-icon">✦</span>
+        <div class="material-name">Leather</div>
+      </div>
+      <div class="material-item">
+        <span class="material-icon">🎨</span>
+        <div class="material-name">Custom Colours</div>
+      </div>
+      <div class="material-item">
+        <span class="material-icon">📐</span>
+        <div class="material-name">Various Sizes</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="products-header">
+    <div>
+      <div class="section-label">Our Collection</div>
+      <h2 class="section-title">Sofa Sets for <em>Every Space</em></h2>
+    </div>
+    <p class="products-sub">From intimate living rooms to grand family spaces — we have the perfect sofa for your home.</p>
+  </div>
+
+  <div class="products-grid">
+    <!-- L-Shaped -->
+    <div class="product-card">
+      <span class="product-icon">🛋️</span>
+      <span class="product-num">01</span>
+      <div class="product-name">L-Shaped Corner Sofas</div>
+      <p class="product-desc">Maximize your living room with our generous corner configurations. Perfect for large family spaces and open-plan rooms.</p>
+      <div class="product-tags">
+        <span class="tag">Fabric</span>
+        <span class="tag">Leather</span>
+        <span class="tag">Large</span>
+      </div>
+    </div>
+
+    <!-- 3+2 Seater -->
+    <div class="product-card">
+      <span class="product-icon">🪑</span>
+      <span class="product-num">02</span>
+      <div class="product-name">3-Seater + 2-Seater Sets</div>
+      <p class="product-desc">The classic living room combination. Timeless arrangement that suits any décor — from contemporary to traditional.</p>
+      <div class="product-tags">
+        <span class="tag">Fabric</span>
+        <span class="tag">Leather</span>
+        <span class="tag">Sets</span>
+      </div>
+    </div>
+
+    <!-- Recliner -->
+    <div class="product-card">
+      <span class="product-icon">💺</span>
+      <span class="product-num">03</span>
+      <div class="product-name">Recliner Sofas</div>
+      <p class="product-desc">Ultimate comfort at the push of a button. Built for relaxation — ideal for home theatres and personal retreats.</p>
+      <div class="product-tags">
+        <span class="tag">Leather</span>
+        <span class="tag">Motorised</span>
+        <span class="tag">Comfort</span>
+      </div>
+    </div>
+
+    <!-- Ottoman -->
+    <div class="product-card">
+      <span class="product-icon">🪆</span>
+      <span class="product-num">04</span>
+      <div class="product-name">Ottoman & Chaise Lounge</div>
+      <p class="product-desc">Elegant accent pieces that add sophistication and extra seating. A statement of refined taste.</p>
+      <div class="product-tags">
+        <span class="tag">Fabric</span>
+        <span class="tag">Leather</span>
+        <span class="tag">Accent</span>
+      </div>
+    </div>
+
+    <!-- Single -->
+    <div class="product-card">
+      <span class="product-icon">🎭</span>
+      <span class="product-num">05</span>
+      <div class="product-name">Single Seater & Accent Chairs</div>
+      <p class="product-desc">Standalone pieces that anchor a room. Perfect for reading nooks, bedrooms, and offices.</p>
+      <div class="product-tags">
+        <span class="tag">Fabric</span>
+        <span class="tag">Leather</span>
+        <span class="tag">Compact</span>
+      </div>
+    </div>
+
+    <!-- Sofa Bed -->
+    <div class="product-card">
+      <span class="product-icon">🌙</span>
+      <span class="product-num">06</span>
+      <div class="product-name">Sofa Beds</div>
+      <p class="product-desc">Two in one — a stylish sofa by day, a comfortable bed by night. Ideal for guest rooms and studio apartments.</p>
+      <div class="product-tags">
+        <span class="tag">Fabric</span>
+        <span class="tag">Foldable</span>
+        <span class="tag">Multi-use</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-visual">
+      <div class="about-visual-inner">
+        <div class="about-sofa-icon">🛋️</div>
+      </div>
+      <div class="about-corner"></div>
+    </div>
+
+    <div>
+      <div class="section-label">Our Story</div>
+      <h2 class="section-title">Furniture That <em>Feels Like Home</em></h2>
+      <p class="about-text">
+        Kaptarakwa Furniture Centre has been a trusted name in Kimumu, Eldoret — 
+        dedicated to helping families and homeowners find the perfect sofa for their 
+        living spaces. We believe a great sofa is the heart of every home.
+      </p>
+      <p class="about-text">
+        Our showroom carries a wide range of sofa sets — from premium leather recliners
+        to cosy fabric L-shaped sofas — sourced for quality, durability, and style.
+        Whatever your taste or budget, we'll find something that fits.
+      </p>
+
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Sofa Categories</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Materials Available</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Customer Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <h2>Ready to Transform <em>Your Living Room?</em></h2>
+  <p>Visit our showroom in Kimumu, Eldoret and experience our collection in person. Our team is here to help you find the perfect fit.</p>
+  <div class="cta-actions">
+    <a class="btn-call" href="tel:+254700000000">
+      📞 Call Us Now
+    </a>
+    <a class="btn-outline" href="#location">Get Directions</a>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="location-inner">
+    <div>
+      <div class="section-label">Find Us</div>
+      <h2 class="section-title">Visit Our <em>Showroom</em></h2>
+      <div class="location-details">
+        <div class="location-item">
+          <div class="location-icon-box">📍</div>
+          <div>
+            <div class="location-item-label">Location</div>
+            <div class="location-item-value">Kimumu, Eldoret<br>Opposite T&A Car Wash</div>
+          </div>
+        </div>
+        <div class="location-item">
+          <div class="location-icon-box">📞</div>
+          <div>
+            <div class="location-item-label">Phone</div>
+            <div class="location-item-value">+254 700 000 000</div>
+          </div>
+        </div>
+        <div class="location-item">
+          <div class="location-icon-box">🕐</div>
+          <div>
+            <div class="location-item-label">Opening Hours</div>
+            <div class="location-item-value">Mon – Sat: 8:00 AM – 7:00 PM<br>Sunday: 10:00 AM – 5:00 PM</div>
+          </div>
+        </div>
+        <div class="location-item">
+          <div class="location-icon-box">🚗</div>
+          <div>
+            <div class="location-item-label">How to Find Us</div>
+            <div class="location-item-value">We are located in Kimumu along the main road, directly opposite T&A Car Wash. Easy to spot — look for our signage.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-placeholder">
+      <div class="map-pin">📍</div>
+      <div class="map-label">Our Location</div>
+      <div class="map-address">Kimumu, Eldoret<br>Opp. T&A Car Wash</div>
+      <a class="map-directions" href="https://maps.google.com/?q=Kimumu,Eldoret,Kenya" target="_blank">
+        Open in Google Maps →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Kaptarakwa <span>Furniture Centre</span></div>
+  <div class="footer-tagline">"Comfort you can feel. Quality you can trust."</div>
+  <div class="footer-copy">© 2025 Kaptarakwa Furniture Centre. Kimumu, Eldoret.</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.product-card, .location-item, .stat').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
