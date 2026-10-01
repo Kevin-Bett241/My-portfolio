@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Class Men Shop – Chepkoilel Junction</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0e0e0e;
+  --ink2:#1c1c1c;
+  --ink3:#2e2e2e;
+  --parchment:#f7f4ef;
+  --parchment2:#ede9e2;
+  --parchment3:#e4dfd6;
+  --gold:#b8922a;
+  --gold-light:#d4aa50;
+  --gold-pale:#f5ecd4;
+  --white:#ffffff;
+  --muted:#7a7570;
+  --border:rgba(14,14,14,0.1);
+  --border-dark:rgba(14,14,14,0.18);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--parchment);color:var(--ink);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:34px;left:0;right:0;z-index:100;
+  height:68px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;
+  background:rgba(247,244,239,0.97);
+  border-bottom:1px solid var(--border-dark);
+  backdrop-filter:blur(8px);
+}
+.nav-logo{display:flex;flex-direction:column;gap:0;text-decoration:none}
+.nav-logo-top{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;font-weight:700;
+  letter-spacing:4px;text-transform:uppercase;
+  color:var(--ink);line-height:1.1;
+}
+.nav-logo-sub{
+  font-size:0.6rem;font-weight:500;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);
+}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{
+  color:var(--muted);text-decoration:none;
+  font-size:0.78rem;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.cart-btn{
+  display:flex;align-items:center;gap:0.5rem;
+  text-decoration:none;color:var(--ink);
+  font-size:0.78rem;font-weight:500;letter-spacing:1px;
+  text-transform:uppercase;
+}
+.cart-count-badge{
+  width:20px;height:20px;border-radius:50%;
+  background:var(--gold);color:var(--white);
+  font-size:0.6rem;font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+}
+.nav-order-btn{
+  background:var(--ink);color:var(--parchment);
+  padding:0.5rem 1.4rem;
+  font-size:0.72rem;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:background 0.2s;
+}
+.nav-order-btn:hover{background:var(--ink3)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:none;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:var(--ink);display:block;transition:all 0.3s}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;padding-top:102px;
+  display:grid;grid-template-columns:1fr 1fr;
+  position:relative;overflow:hidden;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:5rem 4rem 5rem 5rem;
+  background:var(--ink);color:var(--white);
+  position:relative;overflow:hidden;
+}
+.hero-left::before{
+  content:'FC';
+  position:absolute;
+  font-family:'Cormorant Garamond',serif;
+  font-size:28vw;font-weight:700;
+  color:rgba(255,255,255,0.03);
+  right:-4vw;bottom:-4vh;
+  line-height:1;pointer-events:none;
+  letter-spacing:-5px;
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:2rem;
+}
+.hero-eyebrow-line{width:32px;height:1px;background:var(--gold)}
+.hero-eyebrow-text{
+  font-size:0.65rem;font-weight:500;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold-light);
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.5rem,5.5vw,5.5rem);
+  font-weight:600;line-height:1;
+  letter-spacing:-1px;margin-bottom:1.8rem;
+}
+.hero h1 em{font-style:italic;color:var(--gold-light)}
+.hero-desc{
+  font-size:0.9rem;font-weight:300;
+  color:rgba(255,255,255,0.55);
+  line-height:1.8;max-width:380px;margin-bottom:2.5rem;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-gold{
+  background:var(--gold);color:var(--white);
+  padding:0.85rem 2rem;
+  font-size:0.75rem;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;display:inline-block;
+  transition:background 0.2s,transform 0.15s;
+  border:none;cursor:pointer;
+}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-ghost-white{
+  border:1px solid rgba(255,255,255,0.25);
+  color:rgba(255,255,255,0.7);
+  padding:0.85rem 2rem;
+  font-size:0.75rem;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;display:inline-block;
+  transition:border-color 0.2s,color 0.2s;
+}
+.btn-ghost-white:hover{border-color:rgba(255,255,255,0.6);color:var(--white)}
+.hero-proof{
+  display:flex;gap:2.5rem;
+  margin-top:3.5rem;padding-top:2.5rem;
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+.proof-item{display:flex;flex-direction:column;gap:3px}
+.proof-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem;font-weight:700;color:var(--gold-light);
+  line-height:1;
+}
+.proof-label{font-size:0.65rem;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase}
+
+.hero-right{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:5rem 5rem 5rem 4rem;
+  background:var(--parchment);
+  gap:1.5rem;
+}
+.hero-card{
+  background:var(--white);
+  border:1px solid var(--border-dark);
+  padding:1.8rem;
+  display:flex;align-items:flex-start;gap:1.2rem;
+  transition:border-color 0.2s,transform 0.2s;
+  cursor:default;
+}
+.hero-card:hover{border-color:var(--gold);transform:translateX(4px)}
+.hero-card-icon{
+  width:44px;height:44px;min-width:44px;
+  background:var(--gold-pale);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;
+}
+.hero-card-text h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-weight:600;
+  margin-bottom:0.3rem;letter-spacing:0.5px;
+}
+.hero-card-text p{
+  font-size:0.8rem;color:var(--muted);
+  line-height:1.6;
+}
+.hero-location-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--parchment2);
+  border:1px solid var(--border-dark);
+  padding:0.6rem 1.2rem;
+  font-size:0.7rem;font-weight:500;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--muted);width:fit-content;
+  align-self:flex-start;
+}
+.loc-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+
+/* ── MARQUEE ── */
+.marquee-wrap{
+  background:var(--ink);overflow:hidden;
+  white-space:nowrap;padding:0.65rem 0;
+}
+.marquee-inner{display:inline-block;animation:marquee 25s linear infinite}
+.marquee-inner span{
+  font-family:'Cormorant Garamond',serif;
+  font-size:0.9rem;font-weight:500;
+  letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,0.5);padding:0 2rem;
+}
+.marquee-inner span.sep{color:var(--gold);font-size:1rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTIONS ── */
+section{padding:6rem 5rem}
+.eyebrow{
+  display:flex;align-items:center;gap:10px;margin-bottom:0.8rem;
+}
+.eyebrow-line{width:24px;height:1px;background:var(--gold)}
+.eyebrow-text{
+  font-size:0.65rem;font-weight:500;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold);
+}
+.section-heading{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,3.5vw,3.2rem);
+  font-weight:600;letter-spacing:-0.5px;
+  line-height:1.05;margin-bottom:0.8rem;
+}
+.section-sub{color:var(--muted);font-size:0.88rem;line-height:1.7;max-width:500px}
+
+/* ── CATEGORIES ── */
+.categories{background:var(--white)}
+.cat-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+.view-all-link{
+  font-size:0.72rem;font-weight:500;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gold);
+  text-decoration:none;display:flex;align-items:center;gap:6px;
+  transition:gap 0.2s;
+}
+.view-all-link:hover{gap:10px}
+.cat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
+  gap:1px;background:var(--border-dark);
+  border:1px solid var(--border-dark);
+}
+.cat-item{
+  background:var(--white);
+  padding:2rem 1.5rem 1.8rem;
+  display:flex;flex-direction:column;align-items:flex-start;gap:0.7rem;
+  text-decoration:none;color:inherit;
+  cursor:pointer;transition:background 0.2s;
+  position:relative;overflow:hidden;
+}
+.cat-item::after{
+  content:'';position:absolute;
+  left:0;bottom:0;right:0;height:2px;
+  background:var(--gold);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.3s;
+}
+.cat-item:hover{background:var(--parchment)}
+.cat-item:hover::after{transform:scaleX(1)}
+.cat-icon-wrap{
+  width:42px;height:42px;
+  background:var(--gold-pale);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+}
+.cat-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;font-weight:600;letter-spacing:0.5px;
+}
+.cat-sub{font-size:0.65rem;color:var(--muted);letter-spacing:1px}
+
+/* ── PRODUCTS ── */
+.products{background:var(--parchment)}
+.prod-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
+.filter-strip{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.filter-btn{
+  padding:0.45rem 1.1rem;
+  background:transparent;border:1px solid var(--border-dark);
+  color:var(--muted);font-family:'DM Sans',sans-serif;
+  font-size:0.7rem;font-weight:500;
+  letter-spacing:1.5px;text-transform:uppercase;
+  cursor:pointer;transition:all 0.2s;
+}
+.filter-btn:hover,.filter-btn.active{
+  background:var(--ink);border-color:var(--ink);color:var(--parchment);
+}
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:1px;background:var(--border-dark);
+  border:1px solid var(--border-dark);
+}
+.prod-card{
+  background:var(--white);overflow:hidden;
+  cursor:pointer;transition:background 0.2s;
+  display:flex;flex-direction:column;
+}
+.prod-card:hover{background:var(--parchment)}
+.prod-img{
+  width:100%;aspect-ratio:3/4;
+  background:var(--parchment2);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.prod-img-icon{font-size:3.5rem;opacity:0.35;transition:transform 0.4s,opacity 0.3s}
+.prod-card:hover .prod-img-icon{transform:scale(1.08);opacity:0.5}
+.prod-badge{
+  position:absolute;top:12px;left:12px;
+  font-size:0.6rem;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:3px 8px;
+}
+.badge-new{background:var(--ink);color:var(--parchment)}
+.badge-popular{background:var(--gold);color:var(--white)}
+.badge-limited{background:var(--parchment3);color:var(--ink);border:1px solid var(--border-dark)}
+.stock-tag{
+  position:absolute;bottom:12px;right:12px;
+  font-size:0.6rem;font-weight:500;
+  letter-spacing:1px;color:var(--muted);
+  background:rgba(247,244,239,0.9);
+  padding:2px 7px;
+}
+.prod-info{padding:1.2rem 1.4rem 1.4rem;flex:1;display:flex;flex-direction:column;gap:0.5rem}
+.prod-cat{font-size:0.62rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;font-weight:500}
+.prod-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:600;line-height:1.2;
+}
+.prod-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:0.8rem;border-top:1px solid var(--border)}
+.prod-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:700;color:var(--ink);
+}
+.prod-price span{font-size:0.75rem;font-weight:400;color:var(--muted);font-family:'DM Sans',sans-serif}
+.add-cart-btn{
+  width:34px;height:34px;
+  background:var(--ink);color:var(--parchment);
+  border:none;display:flex;align-items:center;justify-content:center;
+  font-size:1rem;cursor:pointer;
+  transition:background 0.2s,transform 0.15s;
+}
+.add-cart-btn:hover{background:var(--gold);transform:scale(0.95)}
+
+/* ── TRUST BANNER ── */
+.trust-banner{
+  background:var(--ink);padding:4rem 5rem;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:2px;border-top:none;
+}
+.trust-item{
+  padding:2rem;
+  border-right:1px solid rgba(255,255,255,0.07);
+  display:flex;flex-direction:column;gap:0.7rem;
+}
+.trust-item:last-child{border-right:none}
+.trust-icon{font-size:1.3rem}
+.trust-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;font-weight:600;
+  color:var(--white);letter-spacing:0.5px;
+}
+.trust-desc{font-size:0.78rem;color:rgba(255,255,255,0.4);line-height:1.6}
+
+/* ── ORDER ── */
+.order-section{
+  background:var(--white);
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;
+}
+.order-left{padding:6rem 5rem;background:var(--parchment)}
+.order-right{padding:6rem 5rem;background:var(--white);border-left:1px solid var(--border-dark)}
+.form-label{
+  display:block;font-size:0.62rem;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:0.5rem;
+}
+.form-group{margin-bottom:1.2rem}
+.form-input,.form-select,.form-textarea{
+  width:100%;padding:0.8rem 1rem;
+  background:var(--white);
+  border:1px solid var(--border-dark);
+  color:var(--ink);font-family:'DM Sans',sans-serif;
+  font-size:0.88rem;outline:none;
+  transition:border-color 0.2s;-webkit-appearance:none;
+}
+.order-left .form-input,.order-left .form-select,.order-left .form-textarea{background:var(--white)}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold)}
+.form-textarea{resize:vertical;min-height:90px}
+.form-select option{background:var(--white)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.submit-btn{
+  width:100%;padding:1rem;
+  background:var(--ink);color:var(--parchment);
+  border:none;font-family:'DM Sans',sans-serif;
+  font-size:0.78rem;font-weight:500;
+  letter-spacing:2.5px;text-transform:uppercase;
+  cursor:pointer;margin-top:0.3rem;
+  transition:background 0.2s;
+}
+.submit-btn:hover{background:var(--gold)}
+.success-msg{
+  display:none;margin-top:1.2rem;
+  padding:1rem 1.2rem;
+  background:var(--gold-pale);
+  border:1px solid rgba(184,146,42,0.3);
+}
+.success-msg p:first-child{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;font-weight:600;color:var(--gold);
+  margin-bottom:0.3rem;
+}
+.success-msg p:last-child{font-size:0.8rem;color:var(--muted)}
+
+.store-info-block{display:flex;flex-direction:column;gap:1.5rem;margin-top:2.5rem}
+.info-row{display:flex;align-items:flex-start;gap:1rem}
+.info-icon{
+  width:38px;height:38px;min-width:38px;
+  background:var(--gold-pale);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;
+}
+.info-text h4{
+  font-family:'Cormorant Garamond',serif;
+  font-size:0.95rem;font-weight:600;margin-bottom:0.2rem;
+}
+.info-text p{font-size:0.8rem;color:var(--muted);line-height:1.6}
+.info-text strong{color:var(--gold)}
+
+/* ── TESTIMONIALS ── */
+.testimonials{background:var(--parchment2);padding:6rem 5rem}
+.testi-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
+  gap:1px;background:var(--border-dark);
+  border:1px solid var(--border-dark);
+  margin-top:3rem;
+}
+.testi-card{
+  background:var(--white);padding:2rem;
+  display:flex;flex-direction:column;gap:1rem;
+}
+.testi-stars{color:var(--gold);font-size:0.8rem;letter-spacing:2px}
+.testi-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-style:italic;
+  line-height:1.7;color:var(--ink2);flex:1;
+}
+.testi-author{
+  display:flex;align-items:center;gap:0.8rem;
+  border-top:1px solid var(--border);
+  padding-top:1rem;
+}
+.testi-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--gold-pale);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:0.85rem;font-weight:600;color:var(--gold);
+}
+.testi-name{font-size:0.82rem;font-weight:500}
+.testi-loc{font-size:0.65rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);color:rgba(255,255,255,0.5);
+  padding:5rem 5rem 2.5rem;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:3rem;margin-bottom:4rem;
+}
+.footer-brand-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--white);margin-bottom:0.3rem;display:block;
+}
+.footer-brand-sub{
+  font-size:0.6rem;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold-light);
+  display:block;margin-bottom:1.2rem;
+}
+.footer-brand p{font-size:0.82rem;line-height:1.7;margin-bottom:1.5rem}
+.footer-socials{display:flex;gap:0.6rem}
+.social-link{
+  width:34px;height:34px;
+  border:1px solid rgba(255,255,255,0.12);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,0.4);
+  font-size:0.7rem;font-weight:700;
+  text-decoration:none;letter-spacing:0;
+  transition:border-color 0.2s,color 0.2s;
+}
+.social-link:hover{border-color:var(--gold);color:var(--gold)}
+.footer-col h4{
+  font-size:0.62rem;letter-spacing:2.5px;
+  text-transform:uppercase;color:rgba(255,255,255,0.6);
+  margin-bottom:1.2rem;font-weight:500;
+}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.footer-col ul a{
+  font-size:0.82rem;color:rgba(255,255,255,0.35);
+  text-decoration:none;transition:color 0.2s;
+}
+.footer-col ul a:hover{color:var(--gold)}
+.footer-divider{
+  border:none;border-top:1px solid rgba(255,255,255,0.07);
+  margin-bottom:2rem;
+}
+.footer-bottom{
+  display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:1rem;
+}
+.footer-bottom p{font-size:0.72rem;color:rgba(255,255,255,0.25)}
+.footer-loc{
+  display:flex;align-items:center;gap:6px;
+  font-size:0.7rem;color:rgba(255,255,255,0.3);
+}
+.loc-dot-gold{width:5px;height:5px;background:var(--gold);border-radius:50%}
+
+/* ── FLOATING ORDER ── */
+.float-order{
+  position:fixed;bottom:2rem;right:2rem;z-index:200;
+  display:flex;align-items:center;gap:0.6rem;
+  background:var(--ink);color:var(--parchment);
+  padding:0.8rem 1.4rem;
+  font-size:0.72rem;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;text-decoration:none;
+  box-shadow:0 4px 20px rgba(14,14,14,0.25);
+  transition:background 0.2s,transform 0.2s;
+}
+.float-order:hover{background:var(--gold);transform:translateY(-2px)}
+.float-count{
+  width:18px;height:18px;border-radius:50%;
+  background:var(--gold);color:var(--white);
+  font-size:0.6rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  transition:background 0.2s;
+}
+.float-order:hover .float-count{background:var(--white);color:var(--gold)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  section{padding:4rem 2rem}
+  nav{padding:0 1.5rem}
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{padding:4rem 2rem}
+  .order-section{grid-template-columns:1fr}
+  .order-right{border-left:none;border-top:1px solid var(--border-dark)}
+  .order-left,.order-right{padding:3rem 2rem}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .trust-banner{padding:3rem 2rem}
+  .testimonials{padding:4rem 2rem}
+  nav .nav-links{display:none}
+  .hamburger{display:flex}
+  .nav-order-btn{display:none}
+}
+@media(max-width:600px){
+  .footer-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .hero-proof{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="topbar" style="background:var(--ink);padding:0.45rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;position:fixed;top:0;left:0;right:0;z-index:101;">
+  <span style="font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);">First Class Men Shop · Chepkoilel Junction</span>
+  <a href="tel:+254784896635" style="display:flex;align-items:center;gap:8px;text-decoration:none;">
+    <span style="font-size:0.62rem;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.4);">📞 Call / WhatsApp:</span>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-weight:700;color:var(--gold-light);letter-spacing:2px;">0784 896 635</span>
+  </a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-top">First Class</span>
+    <span class="nav-logo-sub">Men Shop · Chepkoilel</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#categories">Shop</a></li>
+    <li><a href="#products">New In</a></li>
+    <li><a href="#order">Order</a></li>
+    <li><a href="#visit">Visit Us</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:+254784896635" style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-weight:700;color:var(--gold);letter-spacing:1px;text-decoration:none;display:flex;align-items:center;gap:5px;"><span style="font-size:0.7rem;font-family:'DM Sans',sans-serif;color:var(--muted);font-weight:400;">📞</span>0784 896 635</a>
+    <a href="#order" class="cart-btn">
+      <span>Cart</span>
+      <div class="cart-count-badge" id="cartBadge">0</div>
+    </a>
+    <a href="#order" class="nav-order-btn">Order Now</a>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text">New Collection — 2025</span>
+    </div>
+    <h1>Dress Like<br>A <em>First</em><br>Class Man</h1>
+    <p class="hero-desc">Brand new clothes for the modern Kenyan man. Official shirts, sharp trousers, quality suits, casual wear and more — all fresh, all new, all at Chepkoilel Junction.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-gold">Shop New Arrivals</a>
+      <a href="#order" class="btn-ghost-white">Place an Order</a>
+    </div>
+    <div class="hero-proof">
+      <div class="proof-item">
+        <span class="proof-num">100%</span>
+        <span class="proof-label">Brand New</span>
+      </div>
+      <div class="proof-item">
+        <span class="proof-num">M-Pesa</span>
+        <span class="proof-label">Accepted</span>
+      </div>
+      <div class="proof-item">
+        <span class="proof-num">Fast</span>
+        <span class="proof-label">Delivery</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-location-pill">
+      <div class="loc-dot"></div>
+      <span>Next to Primeblest Bakery · Chepkoilel Jct</span>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-icon">👔</div>
+      <div class="hero-card-text">
+        <h3>Official & Formal Wear</h3>
+        <p>Crisp shirts, sharp blazers, suit trousers, ties. Look the part at every occasion — interview, office, or event.</p>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-icon">👟</div>
+      <div class="hero-card-text">
+        <h3>Casual & Street Style</h3>
+        <p>Jeans, tees, hoodies, joggers, sneakers. Fresh fits for everyday life — clean, modern, Kenyan.</p>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-icon">💚</div>
+      <div class="hero-card-text">
+        <h3>Pay with M-Pesa</h3>
+        <p>Order online or walk in. Pay instantly via M-Pesa. Delivery available across Eldoret and nearby.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span>Official Shirts</span><span class="sep">·</span>
+    <span>Blazers</span><span class="sep">·</span>
+    <span>Suit Trousers</span><span class="sep">·</span>
+    <span>Casual Tees</span><span class="sep">·</span>
+    <span>Jeans</span><span class="sep">·</span>
+    <span>Hoodies</span><span class="sep">·</span>
+    <span>Joggers</span><span class="sep">·</span>
+    <span>Sneakers</span><span class="sep">·</span>
+    <span>Formal Shoes</span><span class="sep">·</span>
+    <span>Belts & Accessories</span><span class="sep">·</span>
+    <span>Chepkoilel Junction</span><span class="sep">·</span>
+    <span>M-Pesa Accepted</span><span class="sep">·</span>
+    <span>Official Shirts</span><span class="sep">·</span>
+    <span>Blazers</span><span class="sep">·</span>
+    <span>Suit Trousers</span><span class="sep">·</span>
+    <span>Casual Tees</span><span class="sep">·</span>
+    <span>Jeans</span><span class="sep">·</span>
+    <span>Hoodies</span><span class="sep">·</span>
+    <span>Joggers</span><span class="sep">·</span>
+    <span>Sneakers</span><span class="sep">·</span>
+    <span>Formal Shoes</span><span class="sep">·</span>
+    <span>Belts & Accessories</span><span class="sep">·</span>
+    <span>Chepkoilel Junction</span><span class="sep">·</span>
+    <span>M-Pesa Accepted</span><span class="sep">·</span>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="cat-header">
+    <div>
+      <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Browse</span></div>
+      <h2 class="section-heading">Shop by Category</h2>
+    </div>
+    <a href="#products" class="view-all-link">View All →</a>
+  </div>
+  <div class="cat-grid">
+    <a href="#products" class="cat-item">
+      <div class="cat-icon-wrap">👔</div>
+      <span class="cat-name">Official Shirts</span>
+      <span class="cat-sub">Plain · Striped · Check</span>
+    </a>
+    <a href="#products" class="cat-item">
+      <div class="cat-icon-wrap">🧥</div>
+      <span class="cat-name">Blazers & Suits</span>
+      <span class="cat-sub">Formal & Smart Casual</span>
+    </a>
+    <a href="#products" class="cat-item">
+      <div class="cat-icon-wrap">👖</div>
+      <span class="cat-name">Trousers & Chinos</span>
+      <span class="cat-sub">Formal & Casual Cuts</span>
+    </a>
+    <a href="#products" class="cat-item">
+      <div class="cat-icon-wrap">👕</div>
+      <span class="cat-name">T-Shirts & Polos</span>
+      <span class="cat-sub">Casual · Everyday</span>
+    </a>
+    <a href="#products" class="cat-item">
+      <div class="cat-icon-wrap">🧣</div>
+      <span class="cat-name">Hoodies & Sweatshirts</span>
+      <span class="cat-sub">Street · Comfort</span>
+    </a>
+    <a href="#products" class="cat-item">
+      <div class="cat-icon-wrap">🩱</div>
+      <span class="cat-name">Jeans & Joggers</span>
+      <span class="cat-sub">Slim · Straight · Baggy</span>
+    </a>
+    <a href="#products" class="cat-item">
+      <div class="cat-icon-wrap">👟</div>
+      <span class="cat-name">Shoes & Sneakers</span>
+      <span class="cat-sub">Formal · Casual · Sport</span>
+    </a>
+    <a href="#products" class="cat-item">
+      <div class="cat-icon-wrap">⌚</div>
+      <span class="cat-name">Accessories</span>
+      <span class="cat-sub">Belts · Ties · Caps</span>
+    </a>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="prod-header">
+    <div>
+      <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Fresh Stock</span></div>
+      <h2 class="section-heading">Featured Products</h2>
+    </div>
+    <a href="#order" class="view-all-link">Order Any Item →</a>
+  </div>
+  <div class="filter-strip">
+    <button class="filter-btn active" onclick="filterProd(this,'all')">All</button>
+    <button class="filter-btn" onclick="filterProd(this,'formal')">Formal</button>
+    <button class="filter-btn" onclick="filterProd(this,'casual')">Casual</button>
+    <button class="filter-btn" onclick="filterProd(this,'footwear')">Footwear</button>
+    <button class="filter-btn" onclick="filterProd(this,'accessories')">Accessories</button>
+  </div>
+  <div class="products-grid" id="prodGrid"></div>
+</section>
+
+<!-- TRUST BANNER -->
+<div class="trust-banner">
+  <div class="trust-item">
+    <div class="trust-icon">✦</div>
+    <div class="trust-title">100% Brand New</div>
+    <p class="trust-desc">Every item is fresh from the supplier. No second-hand. No compromise on quality.</p>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">💚</div>
+    <div class="trust-title">M-Pesa Payments</div>
+    <p class="trust-desc">Pay instantly via M-Pesa. Safe, fast, and confirmed before we process your order.</p>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">🚚</div>
+    <div class="trust-title">Eldoret Delivery</div>
+    <p class="trust-desc">We deliver across Eldoret and Chepkoilel area. Same-day for orders before 12pm.</p>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">📍</div>
+    <div class="trust-title">Walk In Anytime</div>
+    <p class="trust-desc">Visit us at Chepkoilel Junction — next to Primeblest Bakery. Open 7 days a week.</p>
+  </div>
+</div>
+
+<!-- ORDER + STORE INFO -->
+<section class="order-section" id="order">
+  <div class="order-left">
+    <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Order Online</span></div>
+    <h2 class="section-heading">Place Your<br>Order</h2>
+    <p class="section-sub" style="margin-bottom:2rem">Fill the form and we'll confirm your items and M-Pesa details within minutes.</p>
+
+    <form id="orderForm" onsubmit="handleOrder(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input class="form-input" type="text" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone (M-Pesa)</label>
+          <input class="form-input" type="tel" placeholder="07XXXXXXXX" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Delivery Location</label>
+        <input class="form-input" type="text" placeholder="e.g. Chepkoilel, Eldoret CBD, Huruma...">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Category</label>
+        <select class="form-select">
+          <option value="">Select a category</option>
+          <option>Official Shirts</option>
+          <option>Blazers & Suits</option>
+          <option>Trousers & Chinos</option>
+          <option>T-Shirts & Polos</option>
+          <option>Hoodies & Sweatshirts</option>
+          <option>Jeans & Joggers</option>
+          <option>Shoes & Sneakers</option>
+          <option>Accessories</option>
+          <option>Multiple Items</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Order Details</label>
+        <textarea class="form-textarea" placeholder="Describe what you want — item name, size, colour, quantity..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Order Request</button>
+    </form>
+    <div class="success-msg" id="successMsg">
+      <p>Order Received!</p>
+      <p>Thank you! We'll call or WhatsApp you shortly to confirm your order and share M-Pesa payment details.</p>
+    </div>
+  </div>
+
+  <div class="order-right" id="visit">
+    <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Find Us</span></div>
+    <h2 class="section-heading">Visit the<br>Shop</h2>
+    <p class="section-sub" style="margin-bottom:2.5rem">Walk in any time and shop directly. We're easy to find at Chepkoilel Junction.</p>
+
+    <div class="store-info-block">
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div class="info-text">
+          <h4>Location</h4>
+          <p><strong>First Class Men Shop</strong><br>Chepkoilel Junction, Eldoret<br>Next to Primeblest Bakery</p>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🕐</div>
+        <div class="info-text">
+          <h4>Opening Hours</h4>
+          <p><strong>Mon – Sat:</strong> 8:00 AM – 8:00 PM<br><strong>Sunday:</strong> 10:00 AM – 6:00 PM</p>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">💚</div>
+        <div class="info-text">
+          <h4>M-Pesa Payment</h4>
+          <p>Pay via M-Pesa on delivery or before dispatch. <strong>Till number shared after order confirmation.</strong></p>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🚚</div>
+        <div class="info-text">
+          <h4>Delivery</h4>
+          <p>Delivery across Eldoret — <strong>Ksh 100–300</strong> depending on your location. Same-day for orders placed before 12pm.</p>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">💬</div>
+        <div class="info-text">
+          <h4>WhatsApp</h4>
+          <p>Quick questions? Message or call us directly:<br><a href="https://wa.me/254784896635" target="_blank" style="color:var(--gold);font-weight:600;font-size:1.05rem;text-decoration:none;letter-spacing:1px;">+254 784 896 635</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Customers</span></div>
+  <h2 class="section-heading">What They're Saying</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Nilikuwa natafuta official shirt kwa interview. Niliingia First Class Men — walinisaidia kuchagua perfect fit. Nilipata kazi. Quality ya nguo ni ya kweli first class."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">DK</div>
+        <div>
+          <div class="testi-name">David K.</div>
+          <div class="testi-loc">Eldoret CBD</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Blazer na chinos nilinunua hapa — everyone at the office thought I had shopped in Nairobi. Brand new, clean finish. Delivery was same-day too, very impressive."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">SM</div>
+        <div>
+          <div class="testi-name">Samuel M.</div>
+          <div class="testi-loc">Kapseret</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Price ni nzuri sana for the quality you get. Nilikuja kwa store, walinikuonyesha options nyingi. Nilisema 'first class' na kweli ilikuwa first class experience."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">BM</div>
+        <div>
+          <div class="testi-name">Brian M.</div>
+          <div class="testi-loc">Chepkoilel</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Ordered online via WhatsApp, paid M-Pesa, delivered within hours. The joggers and hoodie I ordered were exactly as described. Will be a regular customer for sure."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">TN</div>
+        <div>
+          <div class="testi-name">Timothy N.</div>
+          <div class="testi-loc">Huruma, Eldoret</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-brand-name">First Class</span>
+      <span class="footer-brand-sub">Men Shop · Chepkoilel Junction</span>
+      <p>Premium brand-new menswear at Chepkoilel Junction, Eldoret. Formal, casual, and everything in between — all fresh, all quality, all first class.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-link">FB</a>
+        <a href="#" class="social-link">IG</a>
+        <a href="#" class="social-link">TK</a>
+        <a href="#" class="social-link">WA</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#products">New Arrivals</a></li>
+        <li><a href="#categories">Official Shirts</a></li>
+        <li><a href="#categories">Blazers & Suits</a></li>
+        <li><a href="#categories">Trousers</a></li>
+        <li><a href="#categories">Casual Wear</a></li>
+        <li><a href="#categories">Footwear</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Orders</h4>
+      <ul>
+        <li><a href="#order">Place an Order</a></li>
+        <li><a href="#order">M-Pesa Payment</a></li>
+        <li><a href="#order">Delivery Info</a></li>
+        <li><a href="#visit">Walk In</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/254784896635" target="_blank">WhatsApp: 0784 896 635</a></li>
+        <li><a href="#">Chepkoilel Junction</a></li>
+        <li><a href="#">Next to Primeblest Bakery</a></li>
+        <li><a href="#">Eldoret, Kenya</a></li>
+      </ul>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <p>© 2025 First Class Men Shop. All rights reserved. Chepkoilel Junction, Eldoret.</p>
+    <div class="footer-loc">
+      <div class="loc-dot-gold"></div>
+      <span>Open Today · Next to Primeblest Bakery</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/254784896635" target="_blank" class="float-order" style="background:#25d366;">
+  <span style="font-size:1.1rem;">💬</span>
+  <span>0784 896 635</span>
+</a>
+
+<script>
+const products = [
+  {id:1,name:"Classic White Dress Shirt",cat:"formal",price:1200,badge:"new",icon:"👔",label:"Official Shirts",stock:8},
+  {id:2,name:"Slim Fit Navy Blazer",cat:"formal",price:4500,badge:"popular",icon:"🧥",label:"Blazers",stock:5},
+  {id:3,name:"Dark Chino Trousers",cat:"formal",price:1800,badge:"new",icon:"👖",label:"Trousers",stock:12},
+  {id:4,name:"Striped Polo Shirt",cat:"casual",price:950,badge:"new",icon:"👕",label:"Polo Shirts",stock:15},
+  {id:5,name:"Premium Hoodie",cat:"casual",price:1600,badge:"popular",icon:"🧥",label:"Hoodies",stock:10},
+  {id:6,name:"Slim Fit Dark Jeans",cat:"casual",price:2000,badge:"new",icon:"👖",label:"Jeans",stock:7},
+  {id:7,name:"Oxford Dress Shoes",cat:"footwear",price:3500,badge:"new",icon:"👞",label:"Formal Shoes",stock:6},
+  {id:8,name:"Clean White Sneakers",cat:"footwear",price:2800,badge:"popular",icon:"👟",label:"Sneakers",stock:9},
+  {id:9,name:"Leather Belt",cat:"accessories",price:700,badge:"new",icon:"⌚",label:"Accessories",stock:20},
+  {id:10,name:"Smart Casual Joggers",cat:"casual",price:1400,badge:"limited",icon:"🩱",label:"Joggers",stock:4},
+  {id:11,name:"Formal Black Suit",cat:"formal",price:7500,badge:"limited",icon:"🧥",label:"Suits",stock:3},
+  {id:12,name:"Classic Leather Loafers",cat:"footwear",price:3200,badge:"new",icon:"👞",label:"Loafers",stock:8},
+];
+
+let cartCount = 0;
+
+function renderProducts(filter){
+  const grid = document.getElementById('prodGrid');
+  const list = filter==='all' ? products : products.filter(p=>p.cat===filter);
+  grid.innerHTML = list.map(p=>`
+    <div class="prod-card">
+      <div class="prod-img">
+        <span class="prod-img-icon">${p.icon}</span>
+        <span class="prod-badge badge-${p.badge}">${p.badge==='new'?'New In':p.badge==='popular'?'Popular':'Limited'}</span>
+        <span class="stock-tag">${p.stock} in stock</span>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">${p.label}</div>
+        <div class="prod-name">${p.name}</div>
+        <div class="prod-footer">
+          <div class="prod-price"><span>KES </span>${p.price.toLocaleString()}</div>
+          <button class="add-cart-btn" onclick="addCart()" title="Add to order">+</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterProd(btn, filter){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProducts(filter);
+}
+
+function addCart(){
+  cartCount++;
+  document.getElementById('cartBadge').textContent = cartCount;
+  document.getElementById('floatCount').textContent = cartCount;
+  const fc = document.querySelector('.float-order');
+  fc.style.transform = 'scale(1.1) translateY(-2px)';
+  setTimeout(()=> fc.style.transform = '', 200);
+}
+
+function handleOrder(e){
+  e.preventDefault();
+  document.getElementById('orderForm').style.display='none';
+  document.getElementById('successMsg').style.display='block';
+}
+
+renderProducts('all');
+</script>
+</body>
+</html>
