@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eureka Bakery – Baked for Champions</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FDF6EC;
+    --warm-white: #FEFAF4;
+    --gold: #C8922A;
+    --gold-light: #E8B84B;
+    --dark-brown: #2A1A0A;
+    --mid-brown: #5C3D1E;
+    --rose: #C45A5A;
+    --rose-light: #E8A0A0;
+    --text: #1E100A;
+    --text-muted: #7A5C40;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 16px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(253,246,236,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,146,42,0.2);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 900;
+    color: var(--dark-brown);
+    letter-spacing: 0.04em;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem; font-style: italic;
+    color: var(--text-muted); letter-spacing: 0.12em;
+  }
+  .nav-cta {
+    background: var(--gold);
+    color: #fff; border: none;
+    padding: 8px 18px; border-radius: 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--mid-brown); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100svh;
+    padding: 100px 24px 60px;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: flex-start;
+    background:
+      radial-gradient(ellipse 80% 60% at 80% 20%, rgba(200,146,42,0.13) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 10% 80%, rgba(196,90,90,0.08) 0%, transparent 50%),
+      var(--cream);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -40px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,146,42,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(200,146,42,0.12);
+    border: 1px solid rgba(200,146,42,0.3);
+    padding: 6px 16px; border-radius: 40px;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 24px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-badge::before { content: '🏆'; font-size: 0.85rem; }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 10vw, 4rem);
+    line-height: 1.08; font-weight: 900;
+    color: var(--dark-brown);
+    animation: fadeUp 0.9s 0.1s ease both;
+    max-width: 380px;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--gold);
+  }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 300; font-style: italic;
+    color: var(--text-muted); margin: 18px 0 32px;
+    max-width: 300px; line-height: 1.6;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+  .hero-actions {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    animation: fadeUp 1.1s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--dark-brown); color: #fff;
+    padding: 14px 28px; border-radius: 50px;
+    font-size: 0.9rem; font-weight: 500;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    padding: 14px 28px; border-radius: 50px;
+    font-size: 0.9rem; font-weight: 500;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: transform 0.2s, background 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { background: var(--gold); color: #fff; transform: translateY(-2px); }
+
+  .hero-floating-card {
+    margin-top: 40px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 16px 20px;
+    display: flex; gap: 20px; align-items: center;
+    box-shadow: 0 8px 40px rgba(42,26,10,0.12);
+    max-width: 320px; width: 100%;
+    animation: fadeUp 1.2s 0.4s ease both;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 900; color: var(--dark-brown);
+  }
+  .stat-label {
+    font-size: 0.68rem; color: var(--text-muted);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px;
+  }
+  .stat-divider { width: 1px; height: 36px; background: rgba(0,0,0,0.1); }
+
+  /* ── FEEL SECTION ── */
+  .section { padding: 70px 24px; }
+  .section-label {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--gold); font-weight: 500; margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 7vw, 2.8rem);
+    font-weight: 700; line-height: 1.2;
+    color: var(--dark-brown);
+  }
+  .section-title em { color: var(--gold); font-style: italic; }
+  .section-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-weight: 300; line-height: 1.75;
+    color: var(--text-muted); margin-top: 14px; max-width: 420px;
+  }
+
+  /* ── STORY CARDS ── */
+  .story-grid {
+    margin-top: 36px;
+    display: grid; gap: 16px;
+  }
+  .story-card {
+    background: var(--warm-white);
+    border-radius: 20px; padding: 24px;
+    border: 1px solid rgba(200,146,42,0.15);
+    position: relative; overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .story-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(42,26,10,0.1); }
+  .story-card .icon {
+    font-size: 2rem; margin-bottom: 12px;
+  }
+  .story-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-weight: 700; color: var(--dark-brown); margin-bottom: 8px;
+  }
+  .story-card p {
+    font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;
+  }
+  .story-card.highlight {
+    background: var(--dark-brown); color: #fff;
+  }
+  .story-card.highlight h3, .story-card.highlight p { color: rgba(255,255,255,0.9); }
+  .story-card.highlight .icon { filter: none; }
+
+  /* ── PRODUCTS ── */
+  .products-bg {
+    background:
+      radial-gradient(ellipse 100% 50% at 50% 100%, rgba(42,26,10,0.05) 0%, transparent 60%),
+      var(--warm-white);
+  }
+  .product-grid {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .product-card {
+    background: #fff;
+    border-radius: 18px; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(42,26,10,0.07);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+  }
+  .product-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(42,26,10,0.13); }
+  .product-card.wide { grid-column: 1 / -1; }
+  .product-img {
+    width: 100%; aspect-ratio: 4/3; object-fit: cover;
+    background: #f0e8d8;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+  }
+  .product-card.wide .product-img { aspect-ratio: 16/9; }
+  .product-info { padding: 14px 16px 18px; }
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem; font-weight: 700; color: var(--dark-brown); margin-bottom: 4px;
+  }
+  .product-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+  .product-tag {
+    display: inline-block; margin-top: 8px;
+    background: rgba(200,146,42,0.12);
+    color: var(--gold); font-size: 0.68rem;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 3px 10px; border-radius: 20px;
+  }
+
+  /* ── CAKES CATALOG ── */
+  .cakes-scroll {
+    margin-top: 32px;
+    display: flex; gap: 16px;
+    overflow-x: auto; padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .cakes-scroll::-webkit-scrollbar { height: 4px; }
+  .cakes-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); border-radius: 10px; }
+  .cakes-scroll::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+  .cake-card {
+    flex: 0 0 220px; scroll-snap-align: start;
+    background: #fff; border-radius: 20px; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(42,26,10,0.08);
+    transition: transform 0.25s;
+  }
+  .cake-card:hover { transform: scale(1.03); }
+  .cake-img {
+    width: 100%; height: 200px; object-fit: cover;
+    background: linear-gradient(135deg, #f8edd8 0%, #f0d8c0 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+  }
+  .cake-info { padding: 14px 16px 18px; }
+  .cake-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem; font-weight: 700; color: var(--dark-brown);
+  }
+  .cake-desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; line-height: 1.4; }
+
+  /* ── DELIVERY ── */
+  .delivery-section {
+    background: var(--dark-brown);
+    padding: 70px 24px;
+    position: relative; overflow: hidden;
+  }
+  .delivery-section::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(200,146,42,0.15);
+    pointer-events: none;
+  }
+  .delivery-section .section-label { color: var(--gold-light); }
+  .delivery-section .section-title { color: #fff; }
+  .delivery-section .section-body { color: rgba(255,255,255,0.65); }
+  .route-grid { margin-top: 32px; display: grid; gap: 14px; }
+  .route-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(200,146,42,0.25);
+    border-radius: 16px; padding: 20px;
+  }
+  .route-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold-light); margin-bottom: 8px;
+  }
+  .route-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 8px;
+  }
+  .route-stops {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .stop-pill {
+    background: rgba(200,146,42,0.15);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.72rem; padding: 4px 10px; border-radius: 20px;
+    border: 1px solid rgba(200,146,42,0.2);
+  }
+  .lorry-callout {
+    margin-top: 24px;
+    background: rgba(200,146,42,0.15);
+    border: 1px solid rgba(200,146,42,0.3);
+    border-radius: 16px; padding: 18px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .lorry-callout .icon { font-size: 2.2rem; }
+  .lorry-callout p { color: rgba(255,255,255,0.8); font-size: 0.85rem; line-height: 1.5; }
+  .lorry-callout strong { color: var(--gold-light); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { padding: 70px 24px; background: var(--cream); }
+  .testi-card {
+    background: #fff;
+    border-radius: 20px; padding: 28px 24px;
+    box-shadow: 0 4px 24px rgba(42,26,10,0.08);
+    margin-top: 32px;
+    border-left: 4px solid var(--gold);
+  }
+  .testi-stars { color: var(--gold); font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 14px; }
+  .testi-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-style: italic; font-weight: 300;
+    line-height: 1.7; color: var(--text); margin-bottom: 18px;
+  }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--rose) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; font-weight: 700; color: #fff;
+    font-family: 'Playfair Display', serif;
+  }
+  .testi-name {
+    font-weight: 600; font-size: 0.88rem; color: var(--dark-brown);
+  }
+  .testi-role { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+  .influencer-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(200,146,42,0.12);
+    color: var(--gold); font-size: 0.65rem;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+    padding: 2px 8px; border-radius: 10px; margin-top: 3px;
+  }
+
+  /* ── COMMUNITY ── */
+  .community-section {
+    background: linear-gradient(135deg, #2A1A0A 0%, #3D2010 100%);
+    padding: 70px 24px;
+  }
+  .community-section .section-label { color: var(--gold-light); }
+  .community-section .section-title { color: #fff; }
+  .community-section .section-body { color: rgba(255,255,255,0.65); max-width: 380px; }
+  .impact-grid { margin-top: 32px; display: grid; gap: 14px; }
+  .impact-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(200,146,42,0.2);
+    border-radius: 18px; padding: 22px;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .impact-icon { font-size: 2rem; flex-shrink: 0; margin-top: 2px; }
+  .impact-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 6px;
+  }
+  .impact-desc { font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.55; }
+
+  /* ── CONTACT ── */
+  .contact-section { padding: 70px 24px; }
+  .contact-card {
+    background: var(--dark-brown);
+    border-radius: 28px; padding: 36px 24px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .contact-card::before {
+    content: '';
+    position: absolute; bottom: -40px; left: -40px;
+    width: 160px; height: 160px; border-radius: 50%;
+    background: rgba(200,146,42,0.15);
+  }
+  .contact-card::after {
+    content: '';
+    position: absolute; top: -30px; right: -30px;
+    width: 120px; height: 120px; border-radius: 50%;
+    background: rgba(196,90,90,0.1);
+  }
+  .contact-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 900; color: #fff;
+    margin-bottom: 10px; position: relative; z-index: 1;
+  }
+  .contact-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.65);
+    margin-bottom: 28px; position: relative; z-index: 1;
+  }
+  .contact-actions {
+    display: flex; flex-direction: column; gap: 12px;
+    position: relative; z-index: 1;
+  }
+  .contact-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 15px 24px; border-radius: 50px;
+    font-size: 0.9rem; font-weight: 600; text-decoration: none;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .contact-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+  .contact-btn.whatsapp { background: #25D366; color: #fff; }
+  .contact-btn.call { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); color: #fff; }
+  .contact-info {
+    margin-top: 24px; position: relative; z-index: 1;
+    font-size: 0.8rem; color: rgba(255,255,255,0.5);
+    line-height: 1.8;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark-brown);
+    padding: 40px 24px 30px;
+    border-top: 1px solid rgba(200,146,42,0.15);
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 900; color: #fff;
+    margin-bottom: 6px;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 0.9rem;
+    color: rgba(255,255,255,0.45); margin-bottom: 24px;
+  }
+  .footer-hours {
+    font-size: 0.82rem; color: rgba(255,255,255,0.6);
+    line-height: 1.7; margin-bottom: 24px;
+  }
+  .footer-hours strong { color: var(--gold-light); }
+  .footer-copy {
+    font-size: 0.72rem; color: rgba(255,255,255,0.3);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 20px; margin-top: 10px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ── HOURS BADGE ── */
+  .hours-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(200,146,42,0.1); border: 1px solid rgba(200,146,42,0.2);
+    padding: 6px 14px; border-radius: 30px; margin-bottom: 20px;
+    font-size: 0.75rem; color: var(--gold); font-weight: 500;
+  }
+  .hours-pill::before { content: '🕗'; font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div>
+    <div class="nav-logo">EUREKA <span>BAKERY</span></div>
+    <div class="nav-tag">Baked for Champions</div>
+  </div>
+  <a class="nav-cta" href="https://wa.me/254748471447">Order Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Kimumu, Chips Road · Eldoret</div>
+  <div class="hours-pill">Open Daily · 8 AM – 8 PM</div>
+  <h1>Every Bite Tells a <em>Story</em></h1>
+  <p class="hero-sub">Fresh from the oven, straight to your heart. Breads, pastries & custom cakes crafted with love.</p>
+  <div class="hero-actions">
+    <a href="#products" class="btn-primary">🍞 Browse Menu</a>
+    <a href="#cakes" class="btn-outline">🎂 Order a Cake</a>
+  </div>
+  <div class="hero-floating-card">
+    <div class="stat">
+      <div class="stat-num">3+</div>
+      <div class="stat-label">Years Baking</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Delivery Routes</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">Happy Smiles</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY EUREKA -->
+<section class="section reveal">
+  <p class="section-label">Why Eureka</p>
+  <h2 class="section-title">More Than a Bakery — A <em>Feeling</em></h2>
+  <p class="section-body">We bake with purpose. From your morning loaf to your wedding cake, every product carries the warmth of a community that cares.</p>
+  <div class="story-grid">
+    <div class="story-card reveal">
+      <div class="icon">🌅</div>
+      <h3>Freshly Baked Daily</h3>
+      <p>Out of the oven and onto your table — we start early so you get the freshest bread every single morning.</p>
+    </div>
+    <div class="story-card reveal">
+      <div class="icon">🎂</div>
+      <h3>Custom Celebration Cakes</h3>
+      <p>Birthdays, weddings, anniversaries — we create edible art that makes your moment unforgettable.</p>
+    </div>
+    <div class="story-card highlight reveal">
+      <div class="icon">❤️</div>
+      <h3>We Give Back</h3>
+      <p>From supporting mudslide victims in Marakwet to blood donation drives in Eldoret — champions take care of their community.</p>
+    </div>
+    <div class="story-card reveal">
+      <div class="icon">🚐</div>
+      <h3>We Come to You</h3>
+      <p>Our branded mini-lorries run daily delivery routes across the region — fresh bread delivered to your doorstep.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="section products-bg reveal">
+  <p class="section-label">Our Products</p>
+  <h2 class="section-title">The <em>Eureka</em> Collection</h2>
+  <p class="section-body">Made with quality ingredients, baked with precision. A spread worthy of champions.</p>
+
+  <div class="product-grid">
+    <div class="product-card wide reveal">
+      <div class="product-img" style="background: linear-gradient(135deg, #F5E6CC 0%, #EAD0A0 100%); flex-direction:column; gap:8px;">
+        <span>🍞</span>
+        <span style="font-size:0.8rem;color:#8B6840;font-family:'Cormorant Garamond',serif;font-style:italic;">signature loaves</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">White Bread Loaves</div>
+        <div class="product-desc">Our bestselling sliced white bread — soft, fluffy and perfect for every meal. Available in 400g packs.</div>
+        <span class="product-tag">⭐ Bestseller</span>
+      </div>
+    </div>
+
+    <div class="product-card reveal">
+      <div class="product-img" style="background: linear-gradient(135deg, #E8C99A 0%, #D4A862 100%);">
+        🥐
+      </div>
+      <div class="product-info">
+        <div class="product-name">Mandazis & Scones</div>
+        <div class="product-desc">Golden, pillowy perfection for tea time.</div>
+        <span class="product-tag">🍵 Tea Time</span>
+      </div>
+    </div>
+
+    <div class="product-card reveal">
+      <div class="product-img" style="background: linear-gradient(135deg, #F0D4B0 0%, #E0B880 100%);">
+        🥖
+      </div>
+      <div class="product-info">
+        <div class="product-name">Buns & Rolls</div>
+        <div class="product-desc">Soft, fresh rolls — great for on-the-go.</div>
+        <span class="product-tag">🔥 Fresh Daily</span>
+      </div>
+    </div>
+
+    <div class="product-card reveal">
+      <div class="product-img" style="background: linear-gradient(135deg, #D4C4A0 0%, #C4A870 100%);">
+        🍰
+      </div>
+      <div class="product-info">
+        <div class="product-name">Sliced Cakes</div>
+        <div class="product-desc">Rich, moist celebration cakes by the slice.</div>
+        <span class="product-tag">🎉 Celebrate</span>
+      </div>
+    </div>
+
+    <div class="product-card reveal">
+      <div class="product-img" style="background: linear-gradient(135deg, #E8D4A0 0%, #D4B870 100%);">
+        🧁
+      </div>
+      <div class="product-info">
+        <div class="product-name">Cupcakes</div>
+        <div class="product-desc">Bite-sized joy for every occasion.</div>
+        <span class="product-tag">🌸 Party</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAKES CATALOG -->
+<section id="cakes" class="section reveal">
+  <p class="section-label">Custom Cakes</p>
+  <h2 class="section-title">Made for Your <em>Moment</em></h2>
+  <p class="section-body">Birthday, wedding or just because — we craft cakes that are as beautiful as the memories they celebrate.</p>
+
+  <div class="cakes-scroll">
+    <div class="cake-card">
+      <div class="cake-img" style="background: linear-gradient(135deg, #FFCCD5 0%, #F4A0B0 100%);">🎂</div>
+      <div class="cake-info">
+        <div class="cake-name">Pink Birthday Cake</div>
+        <div class="cake-desc">Classic pink frosting with white cream rosettes. Custom name writing included.</div>
+      </div>
+    </div>
+    <div class="cake-card">
+      <div class="cake-img" style="background: linear-gradient(135deg, #D4E8F0 0%, #A0C8E0 100%);">🎂</div>
+      <div class="cake-info">
+        <div class="cake-name">Blue & White Celebration</div>
+        <div class="cake-desc">Elegant white base with blue floral decorations and chocolate message writing.</div>
+      </div>
+    </div>
+    <div class="cake-card">
+      <div class="cake-img" style="background: linear-gradient(135deg, #FFEE99 0%, #F0CC40 100%);">🎂</div>
+      <div class="cake-info">
+        <div class="cake-name">SpongeBob Kids Cake</div>
+        <div class="cake-desc">Fun themed cakes for children's birthdays. Character toppers & themed decorations.</div>
+      </div>
+    </div>
+    <div class="cake-card">
+      <div class="cake-img" style="background: linear-gradient(135deg, #FFE0E0 0%, #F0C0C0 100%);">🎂</div>
+      <div class="cake-info">
+        <div class="cake-name">Pink Rose Anniversary</div>
+        <div class="cake-desc">White base with pink floral edge decorations and colourful sprinkles.</div>
+      </div>
+    </div>
+    <div class="cake-card">
+      <div class="cake-img" style="background: linear-gradient(135deg, #FFD0D0 0%, #E8B0B0 100%);">🎂</div>
+      <div class="cake-info">
+        <div class="cake-name">Heart-Shaped Cake</div>
+        <div class="cake-desc">Heart shape with red & white piped flowers. Perfect for birthdays & love occasions.</div>
+      </div>
+    </div>
+    <div class="cake-card">
+      <div class="cake-img" style="background: linear-gradient(135deg, #FFF0D0 0%, #E8D090 100%);">💍</div>
+      <div class="cake-info">
+        <div class="cake-name">Wedding Cakes</div>
+        <div class="cake-desc">Multi-tier elegant wedding cakes with floral arrangements and custom designs.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 28px; padding: 20px; background: rgba(200,146,42,0.08); border-radius: 16px; border: 1px solid rgba(200,146,42,0.2);">
+    <p style="font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">
+      "Every cake is handcrafted to your specification. Share your vision with us and we'll bring it to life."
+    </p>
+    <a href="https://wa.me/254748471447?text=Hi!%20I'd%20like%20to%20order%20a%20custom%20cake" class="btn-primary" style="font-size: 0.85rem; padding: 12px 22px;">
+      💬 WhatsApp for Custom Orders
+    </a>
+  </div>
+</section>
+
+<!-- DELIVERY -->
+<section class="delivery-section reveal">
+  <p class="section-label">Home Delivery</p>
+  <h2 class="section-title" style="color:#fff;">We Bring <em style="color:var(--gold-light);">Freshness</em> to Your Door</h2>
+  <p class="section-body">Spot our branded mini-lorries on the road? Fresh Eureka bread is nearby. We run two daily delivery routes across the region.</p>
+
+  <div class="lorry-callout reveal">
+    <div class="icon">🚐</div>
+    <p><strong>When you spot our mini-lorry</strong> — you know fresh bread is in your area. Hail us down or call to confirm drop-off.</p>
+  </div>
+
+  <div class="route-grid" style="margin-top: 24px;">
+    <div class="route-card reveal">
+      <div class="route-num">Route 01</div>
+      <div class="route-name">Northern Circuit</div>
+      <div class="route-stops">
+        <span class="stop-pill">Chepkanga</span>
+        <span class="stop-pill">Chembulet</span>
+        <span class="stop-pill">Naiberi</span>
+        <span class="stop-pill">Strobag</span>
+        <span class="stop-pill">Kipkorgot</span>
+        <span class="stop-pill">Kapsoya</span>
+      </div>
+    </div>
+    <div class="route-card reveal">
+      <div class="route-num">Route 02</div>
+      <div class="route-name">Eastern Circuit</div>
+      <div class="route-stops">
+        <span class="stop-pill">Kiplombe</span>
+        <span class="stop-pill">Kaaboi</span>
+        <span class="stop-pill">Kapkawa</span>
+        <span class="stop-pill">Soy</span>
+        <span class="stop-pill">Kamagut</span>
+        <span class="stop-pill">Juakali</span>
+        <span class="stop-pill">Baharini</span>
+        <span class="stop-pill">Rodi</span>
+        <span class="stop-pill">Huruma</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 24px; text-align: center;">
+    <a href="tel:0748471447" class="contact-btn call" style="display:inline-flex; padding: 14px 28px; border-radius: 50px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; text-decoration: none; font-weight: 600; gap: 8px; align-items: center;">📞 Call for Delivery — 0748 471 447</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials reveal">
+  <p class="section-label">Community Love</p>
+  <h2 class="section-title">What Eldoret <em>Says</em></h2>
+
+  <div class="testi-card reveal">
+    <div class="testi-stars">★★★★★</div>
+    <div class="testi-text">"Eureka Bakery is the real deal in Eldoret. The bread is consistently fresh, the cakes are works of art, and you can feel they genuinely care about the people around them. Champions through and through."</div>
+    <div class="testi-author">
+      <div class="testi-avatar">A</div>
+      <div>
+        <div class="testi-name">Arap Uria</div>
+        <div class="testi-role">Eldoret Social Media Influencer</div>
+        <div class="influencer-badge">✓ Verified Champion</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testi-card reveal" style="border-left-color: var(--rose); margin-top: 16px;">
+    <div class="testi-stars">★★★★★</div>
+    <div class="testi-text">"I ordered a birthday cake for my daughter and they got every detail perfect. The pink frosting, the name, the rosettes — it was more beautiful than I imagined. The whole family was amazed."</div>
+    <div class="testi-author">
+      <div class="testi-avatar" style="background: linear-gradient(135deg, var(--rose) 0%, var(--rose-light) 100%);">R</div>
+      <div>
+        <div class="testi-name">A Happy Mum</div>
+        <div class="testi-role">Eldoret, Kenya</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testi-card reveal" style="border-left-color: var(--mid-brown); margin-top: 16px;">
+    <div class="testi-stars">★★★★★</div>
+    <div class="testi-text">"Their delivery routes are a game-changer. I used to worry about finding fresh bread in my area — now I just wait for the Eureka lorry. Reliable, fresh, affordable."</div>
+    <div class="testi-author">
+      <div class="testi-avatar" style="background: linear-gradient(135deg, var(--mid-brown) 0%, var(--gold) 100%);">K</div>
+      <div>
+        <div class="testi-name">Regular Customer</div>
+        <div class="testi-role">Soy, Eldoret</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY IMPACT -->
+<section class="community-section reveal">
+  <p class="section-label">Community Impact</p>
+  <h2 class="section-title" style="color:#fff;">Champions <em style="color:var(--gold-light);">Give Back</em></h2>
+  <p class="section-body">At Eureka Bakery, we believe in lifting the community that lifts us. Our commitment goes beyond bread.</p>
+  <div class="impact-grid">
+    <div class="impact-card reveal">
+      <div class="impact-icon">🏘️</div>
+      <div>
+        <div class="impact-title">Marakwet Mudslide Relief</div>
+        <div class="impact-desc">We mobilised resources and provided support for victims of the Marakwet mudslide disaster — because neighbours help neighbours.</div>
+      </div>
+    </div>
+    <div class="impact-card reveal">
+      <div class="impact-icon">🩸</div>
+      <div>
+        <div class="impact-title">Blood Donation Drive · Eldoret</div>
+        <div class="impact-desc">Partnered with health organisations in Eldoret to encourage and support blood donation in our city. Saving lives, one pint at a time.</div>
+      </div>
+    </div>
+    <div class="impact-card reveal">
+      <div class="impact-icon">🤝</div>
+      <div>
+        <div class="impact-title">Local Employment</div>
+        <div class="impact-desc">Proudly employing members of our local community — bakers, drivers, and front-of-house staff — keeping skills and income within Eldoret.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section reveal">
+  <div class="contact-card">
+    <div class="contact-title">Let's Bake Something Special</div>
+    <div class="contact-sub">Custom orders, bulk supply, corporate catering — we've got you covered.</div>
+    <div class="contact-actions">
+      <a href="https://wa.me/254748471447?text=Hi%20Eureka%20Bakery!%20I'd%20like%20to%20place%20an%20order" class="contact-btn whatsapp">
+        💬 WhatsApp Us — 0748 471 447
+      </a>
+      <a href="tel:0748471447" class="contact-btn call">
+        📞 Call Us Directly
+      </a>
+      <a href="tel:0723139316" class="contact-btn call" style="font-size: 0.82rem;">
+        📞 Alternative — 0723 139 316
+      </a>
+    </div>
+    <div class="contact-info">
+      📍 Kimumu, Chips Road, Eldoret<br>
+      🕗 Open Daily: 8:00 AM – 8:00 PM<br>
+      For wholesale / bulk orders: 0114 464 485
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">EUREKA <span>BAKERY</span></div>
+  <div class="footer-tagline">Baked for Champions</div>
+  <div class="footer-hours">
+    <strong>Location:</strong> Kimumu, Chips Road, Eldoret<br>
+    <strong>Hours:</strong> Monday – Sunday · 8:00 AM to 8:00 PM<br>
+    <strong>Phone:</strong> 0748 471 447 · 0723 139 316<br>
+    <strong>Wholesale:</strong> 0114 464 485
+  </div>
+  <div class="footer-copy">
+    © 2025 Eureka Bakery · Kimumu, Eldoret, Kenya · All Rights Reserved
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
